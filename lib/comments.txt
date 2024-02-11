@@ -1,0 +1,105 @@
+  Text(
+                "*required",
+                style:
+                    TextStyle(fontSize: 12, color: Colors.red.withOpacity(0.5)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 24.0),
+                child: Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(top: 21.0),
+                        child: Text(
+                          "TRAVEL NAME *",
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      TMTextField(controller: travelNameController),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 28.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "TRAVELLING FROM *",
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ),
+                      TMTextField(controller: destinationController),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 28.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "TRAVELLING TO *",
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ),
+                      TMTextField(controller: destinationController),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 28.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "ADD CHECKLIST",
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ),
+                      TMTextField(controller: destinationController),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 28.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "ADD NOTE",
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ),
+                      TMTextField(controller: destinationController),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color(0xffE09132)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      side: const BorderSide(
+                                          color: Color(0xffE09132))))),
+                      onPressed: () {},
+                      child: false
+                          ? const SizedBox(
+                              height: 12,
+                              width: 12,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: Colors.white,
+                              ),
+                            )
+                          : const Text(
+                              "Create",
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            )))
