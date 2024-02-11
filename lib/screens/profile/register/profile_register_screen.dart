@@ -37,7 +37,7 @@ class _ProfileRegisterScreenState extends State<ProfileRegisterScreen> {
   // Picks up travel date
   _pickUpDOB() async {
     DateTime now = DateTime.now();
-    DateTime lastDate = DateTime(now.year - 16);
+    DateTime lastDate = DateTime(now.year - 18);
     DateTime initialDate =
         DateTime(lastDate.year, lastDate.month, lastDate.day);
     if (dobController.text.isNotEmpty) {

@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.getTheme(),
         debugShowCheckedModeBanner: false,
         title: 'TravelMotto',
-        home: MaterialApp.router(routerConfig: routes));
+        home: MaterialApp.router(
+            debugShowCheckedModeBanner: false, routerConfig: routes));
   }
 }

@@ -101,29 +101,33 @@ class LocationNotesRepository {
           authorId: TravellerProfileRepository.profile.id,
           authorName: "Manish Poudel",
           noteId: "1",
-          fullAddress: "Dhumbarahi,Kathmandu,Nepal",
-          title: "Request for Trash",
-          notes: "I can see mountains, goats ",
+          fullAddress:
+              "Sunset Point Overlook, Grand Canyon National Park, Arizona, USA",
+          title: "Sunset Point Overlook",
+          notes:
+              "Witnessed the most breathtaking sunset from this vantage point. The vibrant hues of orange and pink painted the sky, casting a mesmerizing glow over the landscape. A must-visit spot for nature lovers and photographers",
           state: "active",
           lat: 37.4219983,
           lng: -122.085),
       LocationNotes(
           authorId: TravellerProfileRepository.profile.id,
-          authorName: "Manish Poudel",
+          authorName: "Patrick Poudel",
           noteId: "2",
-          fullAddress: "Dhumbarahi,Kathmandu,Nepal",
-          title: "Trash Requested",
-          notes: "I can see mountains, goats ",
+          fullAddress: "Old Town Square, Prague, Czech Republic",
+          title: "Historic Old Town Square",
+          notes:
+              "Stepping into history at Old Town Square! The cobblestone streets, quaint cafes, and iconic architecture transport you back in time. Don't miss the Astronomical Clock and the lively atmosphere of this charming square",
           state: "trash_requested",
           lat: 37.4219983,
           lng: -122.085),
       LocationNotes(
           authorId: TravellerProfileRepository.profile.id,
           authorName: "Manish Poudel",
-          fullAddress: "Dhumbarahi,Kathmandu,Nepal",
+          fullAddress: "Old Town Square, Prague, Czech Republic",
           noteId: "3",
-          title: "Request for trash",
-          notes: "I can see mountains, goats ",
+          title: "Enchanting Forest Glade",
+          notes:
+              "Wandered into an enchanting forest glade straight out of a fairytale. Sunlight filtering through the canopy, birdsong filling the air – it's a scene of pure magic. Take a deep breath and let nature's tranquility wash over you",
           state: "active",
           lat: 37.4222503,
           lng: -122.086783),
@@ -132,21 +136,12 @@ class LocationNotesRepository {
           authorName: "Smith",
           fullAddress: "Dhumbarahi,Kathmandu,Nepal",
           noteId: "4",
-          title: "Trash behalf",
-          notes: "Lovely people, and food brings joy to me..",
+          title: "Vibrant Street Art Alley",
+          notes:
+              "Explored the vibrant street art alley today, where every corner is a canvas bursting with color and creativity. From whimsical murals to thought-provoking graffiti, each piece tells a unique story. Art enthusiasts, rejoice!",
           state: "trash_requested",
           lat: 0,
           lng: 0),
-      LocationNotes(
-          authorId: "",
-          authorName: "Smith",
-          noteId: "5",
-          fullAddress: "Dhumbarahi,Kathmandu,Nepal",
-          title: "",
-          notes: "Lovely people, and food brings joy to me..",
-          state: "active",
-          lat: 0,
-          lng: 0)
     ];
     _locationNotesController.sink.add(_locationNotes);
   }
