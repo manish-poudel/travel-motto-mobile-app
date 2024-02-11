@@ -55,6 +55,10 @@ class SomethingWentWrong extends StatelessWidget {
                               textAlign: TextAlign.left,
                             ),
                             Text(
+                              "• Granted permission for location",
+                              style: TextStyle(color: Colors.black54),
+                            ),
+                            Text(
                               "• Location services enabled from settings",
                               style: TextStyle(color: Colors.black54),
                             ),
