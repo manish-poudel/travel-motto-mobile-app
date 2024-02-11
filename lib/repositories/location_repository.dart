@@ -8,6 +8,11 @@ class LocationRepository {
 
   // Get travel location
   Future<TravelLocation?> getCurrentLocation({bool refresh = false}) async {
+    LocationPermission locationPermission = await Geolocator.checkPermission();
+    if (locationPermission == LocationPermission.denied ||
+        locationPermission == LocationPermission.deniedForever) {
+      return null;
+    }
     if (!await Geolocator.isLocationServiceEnabled()) {
       return null;
     }
