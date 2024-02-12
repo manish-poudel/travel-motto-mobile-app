@@ -23,8 +23,11 @@ _$TravelGameImpl _$$TravelGameImplFromJson(Map<String, dynamic> json) =>
       isOwner: json['isOwner'] as bool,
       author: json['author'] as String,
       lockedNotes: json['lockedNotes'] as String,
+      organiserId: json['organiserId'] as String,
       photoOwner: json['photoOwner'] as String?,
       photoSource: json['photoSource'] as String?,
+      passCode: json['passCode'] as String?,
+      passCodeHint: json['passCodeHint'] as String?,
       photoOwnerLink: json['photoOwnerLink'] as String?,
     );
 
@@ -42,7 +45,10 @@ Map<String, dynamic> _$$TravelGameImplToJson(_$TravelGameImpl instance) =>
       'isOwner': instance.isOwner,
       'author': instance.author,
       'lockedNotes': instance.lockedNotes,
+      'organiserId': instance.organiserId,
       'photoOwner': instance.photoOwner,
       'photoSource': instance.photoSource,
+      'passCode': instance.passCode,
+      'passCodeHint': instance.passCodeHint,
       'photoOwnerLink': instance.photoOwnerLink,
     };

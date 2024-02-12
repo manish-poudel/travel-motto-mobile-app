@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:travel_motto/screens/travel_games/view/bloc/travel_games_bloc.dart';
 import 'package:travel_motto/screens/travel_games/view/widgets/travel_games_list_item.dart';
 import 'package:travel_motto/theme/theme.dart';
 import 'package:travel_motto/utils/launcher_utils.dart';
+import 'package:travel_motto/widgets/rounded_modal_bottom_sheet.dart';
+import 'package:travel_motto/widgets/snackbar.dart';
 import 'package:travel_motto/widgets/something_went_wrong.dart';
+import 'package:travel_motto/widgets/tm_rounded_textfield.dart';
 
 class TravelGamesScreen extends StatefulWidget {
   const TravelGamesScreen({super.key});
@@ -15,6 +19,8 @@ class TravelGamesScreen extends StatefulWidget {
 
 class _TravelGamesScreenState extends State<TravelGamesScreen> {
   late final TravelGamesBloc _bloc;
+  final TextEditingController _passCodeController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -29,16 +35,6 @@ class _TravelGamesScreenState extends State<TravelGamesScreen> {
         child: Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              actions: [
-                TextButton.icon(
-                    onPressed: () async {
-                      await LauncherUtils.launchWebsite(
-                          url:
-                              "https://sites.google.com/view/travelmotto/travel-games");
-                    },
-                    icon: const Icon(Icons.add),
-                    label: const Text("Create"))
-              ],
               leading: IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -63,8 +59,103 @@ class _TravelGamesScreenState extends State<TravelGamesScreen> {
                           child: ListView.builder(
                               itemCount: travelGames.length,
                               itemBuilder: (context, index) {
-                                return TravelGamesListItem(
-                                    travelGame: travelGames[index]);
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 32.0),
+                                  child: TravelGamesListItem(
+                                      onPressed: () {
+                                        if (travelGames[index].passCode ==
+                                            null) {
+                                          context.push(
+                                              '/play_travel_game_screen',
+                                              extra: travelGames[index]);
+                                        } else {
+                                          showRoundedModalBottomSheet(
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      16.0),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      Text("Enter passcode",
+                                                          style: TextStyle(
+                                                              fontSize: 16,
+                                                              color: Theme.of(
+                                                                      context)
+                                                                  .primaryColor,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold)),
+                                                      travelGames[index]
+                                                                  .passCodeHint ==
+                                                              null
+                                                          ? const SizedBox
+                                                              .shrink()
+                                                          : Text(
+                                                              "Hint: ${travelGames[index].passCodeHint!}",
+                                                              style: const TextStyle(
+                                                                  fontSize: 12,
+                                                                  color: Colors
+                                                                      .black54),
+                                                            ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(
+                                                                top: 16.0),
+                                                        child: TMRoundedTextField(
+                                                            hintText:
+                                                                "Passcode",
+                                                            controller:
+                                                                _passCodeController),
+                                                      ),
+                                                      Align(
+                                                          alignment: Alignment
+                                                              .bottomRight,
+                                                          child: TextButton(
+                                                            child: Text("Go",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        16,
+                                                                    color: Theme.of(
+                                                                            context)
+                                                                        .primaryColor)),
+                                                            onPressed: () {
+                                                              if (_passCodeController
+                                                                      .text ==
+                                                                  travelGames[
+                                                                          index]
+                                                                      .passCode) {
+                                                                Navigator.of(
+                                                                        context)
+                                                                    .pop();
+                                                                context.push(
+                                                                    '/play_travel_game_screen',
+                                                                    extra: travelGames[
+                                                                        index]);
+                                                              } else {
+                                                                Navigator.of(
+                                                                        context)
+                                                                    .pop();
+                                                                showSnackBar(
+                                                                    context,
+                                                                    "Ops! Wrong passcode. Try again");
+                                                              }
+                                                            },
+                                                          ))
+                                                    ],
+                                                  ),
+                                                );
+                                              });
+                                        }
+                                      },
+                                      travelGame: travelGames[index]),
+                                );
                               }),
                         );
                       }) ??

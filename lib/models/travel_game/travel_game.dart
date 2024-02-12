@@ -20,8 +20,11 @@ class TravelGame with _$TravelGame {
       required bool isOwner,
       required String author,
       required String lockedNotes,
+      required String organiserId,
       String? photoOwner,
       String? photoSource,
+      String? passCode,
+      String? passCodeHint,
       String? photoOwnerLink}) = _TravelGame;
 
   factory TravelGame.fromJson(Map<String, Object?> json) =>
