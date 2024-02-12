@@ -172,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         onPressed: () {
                                           context.push('/scan_note',
                                               extra:
-                                                  ScanLocationNotesType.mock);
+                                                  ScanLocationNotesType.public);
                                         },
                                         child: Row(
                                           mainAxisAlignment:

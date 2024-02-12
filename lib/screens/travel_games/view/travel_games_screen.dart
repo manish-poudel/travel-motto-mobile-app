@@ -34,7 +34,7 @@ class _TravelGamesScreenState extends State<TravelGamesScreen> {
                     onPressed: () async {
                       await LauncherUtils.launchWebsite(
                           url:
-                              "https://sites.google.com/view/travelmotto/create-game");
+                              "https://sites.google.com/view/travelmotto/travel-games");
                     },
                     icon: const Icon(Icons.add),
                     label: const Text("Create"))
