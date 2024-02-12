@@ -6,7 +6,6 @@ import 'package:travel_motto/models/current_travel.dart/current_travel.dart';
 import 'package:travel_motto/models/location_notes/location_notes.dart';
 import 'package:travel_motto/models/open_street_location/os_location.dart';
 import 'package:travel_motto/models/travel_game/travel_game.dart';
-import 'package:travel_motto/models/travel_game_organiser.dart/travel_game_organiser.dart';
 import 'package:travel_motto/repositories/repository_container.dart';
 import 'package:travel_motto/screens/add_notes/add_note_screen.dart';
 import 'package:travel_motto/screens/add_notes/bloc/add_note_bloc.dart';

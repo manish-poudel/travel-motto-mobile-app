@@ -39,34 +39,56 @@ class TravelGamesListItem extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.only(right: 8.0, bottom: 8.0),
-                          child: TextButton.icon(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all(Colors.green),
-                                  shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(16))),
-                                  padding: MaterialStateProperty.all(
-                                      const EdgeInsets.symmetric(
-                                          horizontal: 8)),
-                                  tapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap),
-                              onPressed: onPressed,
-                              icon: const Icon(
-                                Icons.play_arrow,
-                                color: Colors.white,
-                              ),
-                              label: const Text(
-                                "Play",
-                                style: TextStyle(color: Colors.white),
-                              )),
-                        ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.location_pin,
+                                  color: Colors.red,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      travelGame.fullAddress,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(fontSize: 12),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(right: 8.0, bottom: 8.0),
+                            child: TextButton.icon(
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all(Colors.green),
+                                    shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(16))),
+                                    padding: MaterialStateProperty.all(
+                                        const EdgeInsets.symmetric(
+                                            horizontal: 8)),
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap),
+                                onPressed: onPressed,
+                                icon: const Icon(
+                                  Icons.play_arrow,
+                                  color: Colors.white,
+                                ),
+                                label: const Text(
+                                  "Play",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ],
                       )
                     ],
                   ),
@@ -85,7 +107,9 @@ class TravelGamesListItem extends StatelessWidget {
                               ),
                               Text(
                                 "Requires passcode",
-                                style: TextStyle(color: Colors.red),
+                                style: TextStyle(
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold),
                               )
                             ],
                           ),
@@ -93,6 +117,7 @@ class TravelGamesListItem extends StatelessWidget {
                 ],
               ),
             ),
+
       // Padding(
       //   padding: const EdgeInsets.only(top: 8.0),
       //   child: Column(

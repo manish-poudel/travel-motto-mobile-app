@@ -33,14 +33,13 @@ class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
             backgroundColor: Colors.white,
             appBar: AppBar(
               actions: [
-                TextButton.icon(
+                TextButton(
                     onPressed: () async {
                       await LauncherUtils.launchWebsite(
                           url:
                               "https://sites.google.com/view/travelmotto/travel-games");
                     },
-                    icon: const Icon(Icons.add),
-                    label: const Text("Create"))
+                    child: const Text("Be organiser"))
               ],
               leading: IconButton(
                   icon: const Icon(

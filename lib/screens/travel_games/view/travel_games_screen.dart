@@ -8,7 +8,6 @@ import 'package:travel_motto/utils/launcher_utils.dart';
 import 'package:travel_motto/widgets/rounded_modal_bottom_sheet.dart';
 import 'package:travel_motto/widgets/snackbar.dart';
 import 'package:travel_motto/widgets/something_went_wrong.dart';
-import 'package:travel_motto/widgets/tm_primary_button.dart';
 import 'package:travel_motto/widgets/tm_rounded_textfield.dart';
 
 class TravelGamesScreen extends StatefulWidget {
@@ -36,16 +35,6 @@ class _TravelGamesScreenState extends State<TravelGamesScreen> {
         child: Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              actions: [
-                TextButton.icon(
-                    onPressed: () async {
-                      await LauncherUtils.launchWebsite(
-                          url:
-                              "https://sites.google.com/view/travelmotto/travel-games");
-                    },
-                    icon: const Icon(Icons.add),
-                    label: const Text("Create"))
-              ],
               leading: IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios,
