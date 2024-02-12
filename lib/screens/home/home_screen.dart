@@ -215,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 side: const BorderSide(
                                                     color: Colors.white)))),
                                     onPressed: () {
-                                      context.push('/travel_games');
+                                      context.push('/travel_game_organisers');
                                     },
                                     child: const Row(
                                       mainAxisAlignment:

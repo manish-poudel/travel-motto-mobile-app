@@ -13,9 +13,11 @@ class PlayTravelGameBloc
     extends Bloc<PlayTravelGameEvent, PlayTravelGameState> {
   final TravelGame travelGame;
   final LocationRepository locationRepository;
-  PlayTravelGameBloc(
-      {required this.locationRepository, required this.travelGame})
-      : super(const _Initial()) {
+
+  PlayTravelGameBloc({
+    required this.locationRepository,
+    required this.travelGame,
+  }) : super(const _Initial()) {
     on<PlayTravelGameEvent>((event, emit) async {
       await event.whenOrNull(started: () async => await _onEventStarted(emit));
     });

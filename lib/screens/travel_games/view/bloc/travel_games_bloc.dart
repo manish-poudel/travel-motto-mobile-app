@@ -9,7 +9,9 @@ part 'travel_games_bloc.freezed.dart';
 
 class TravelGamesBloc extends Bloc<TravelGamesEvent, TravelGamesState> {
   final TravelGamesRepository travelGamesRepository;
-  TravelGamesBloc({required this.travelGamesRepository})
+  final String organiserId;
+  TravelGamesBloc(
+      {required this.travelGamesRepository, required this.organiserId})
       : super(const _Initial()) {
     on<TravelGamesEvent>((event, emit) async {
       await event.when(started: () async => await _onEventStarted(emit));
@@ -36,7 +38,7 @@ class TravelGamesBloc extends Bloc<TravelGamesEvent, TravelGamesState> {
       ];
 
       //emit(TravelGamesState.ready(travelGames: travelGames));
-      await travelGamesRepository.getTravelGames().then((value) {
+      await travelGamesRepository.getTravelGames(organiserId).then((value) {
         for (var element in value.docs) {
           travelGames.add(element.data());
         }
