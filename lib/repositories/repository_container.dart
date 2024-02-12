@@ -71,4 +71,8 @@ class RepositoryContainer {
     _travelGamesRepository ??= TravelGamesRepository();
     return _travelGamesRepository!;
   }
+
+  void dispose() {
+    _travelsRepository = null;
+  }
 }

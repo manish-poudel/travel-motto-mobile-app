@@ -64,7 +64,7 @@ class TravelGamesListItem extends StatelessWidget {
               ),
             ),
       Padding(
-        padding: const EdgeInsets.only(left: 0.0),
+        padding: const EdgeInsets.only(top: 8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

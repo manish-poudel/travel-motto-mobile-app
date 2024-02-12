@@ -24,6 +24,7 @@ class SettingsView extends StatefulWidget {
 
 class _SettingsViewState extends State<SettingsView> {
   void _onTapSignOut() {
+    context.read<RepositoryContainer>().dispose();
     context.go('/login');
   }
 
@@ -139,7 +140,7 @@ class _SettingsViewState extends State<SettingsView> {
                                               onTap: () {
                                                 context.push('/scan_note',
                                                     extra: ScanLocationNotesType
-                                                        .mock);
+                                                        .private);
                                               },
                                               title: "Notes",
                                               visualDensity:
@@ -188,11 +189,11 @@ class _SettingsViewState extends State<SettingsView> {
                                           SettingsListItem(
                                             visualDensity: const VisualDensity(
                                                 horizontal: 0, vertical: -4),
-                                            title: "Create travel game",
+                                            title: "Travel games",
                                             onTap: () async {
                                               await LauncherUtils.launchWebsite(
                                                   url:
-                                                      "https://sites.google.com/view/travelmotto/create-game");
+                                                      "https://sites.google.com/view/travelmotto/travel-games");
                                             },
                                           ),
                                           SettingsListItem(
@@ -274,6 +275,7 @@ class _SettingsViewState extends State<SettingsView> {
                                                       await FirebaseAuth
                                                           .instance
                                                           .signOut();
+
                                                       _onTapSignOut();
                                                     });
                                               },

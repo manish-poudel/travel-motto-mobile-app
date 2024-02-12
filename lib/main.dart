@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.getTheme(),
         debugShowCheckedModeBanner: false,
         title: 'TravelMotto',
-        home: MaterialApp.router(routerConfig: routes));
+        home: MaterialApp.router(
+            debugShowCheckedModeBanner: false, routerConfig: routes));
   }
 }
