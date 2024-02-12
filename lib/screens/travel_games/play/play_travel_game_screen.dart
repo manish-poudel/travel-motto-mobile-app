@@ -56,19 +56,6 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 16.0,
-                                left: 16.0,
-                                right: 16.0,
-                                bottom: 8.0),
-                            child: Text(
-                              "${travelGame.question}?",
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87),
-                            ),
-                          ),
                           travelGame.photoUrl != null
                               ? Stack(
                                   alignment: Alignment.bottomRight,
@@ -119,18 +106,29 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                               : const SizedBox.shrink(),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8.0),
+                                horizontal: 16.0, vertical: 0.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 8.0,
+                                  ),
+                                  child: Text(
+                                    "${travelGame.question}?",
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black87),
+                                  ),
+                                ),
                                 Text(
                                   travelGame.notes,
                                   style: const TextStyle(
-                                      fontSize: 12, color: Colors.black),
+                                      fontSize: 12, color: Colors.black54),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 16.0),
+                                  padding: const EdgeInsets.only(top: 32.0),
                                   child: TMRoundedTextField(
                                       controller: _answerController,
                                       readOnly: !allowPlay,

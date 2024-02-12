@@ -17,7 +17,7 @@ part 'current_travel_state.dart';
 part 'current_travel_bloc.freezed.dart';
 
 class CurrentTravelBloc extends Bloc<CurrentTravelEvent, CurrentTravelState> {
-  final CurrentTravel currentTravel;
+  CurrentTravel currentTravel;
   final CurrentTravelRepository currentTravelRepository;
   final TravelsRepository travelsRepository;
   final LocationRepository locationRepository;
@@ -153,20 +153,18 @@ class CurrentTravelBloc extends Bloc<CurrentTravelEvent, CurrentTravelState> {
           .currentTravel
           .travel
           .copyWith(checkList: checkLists);
-      CurrentTravel updatedCurrentTravel = (state as _Ready)
-          .currentTravel
-          .copyWith(
-              travel: updatedTravel,
-              completedCheckList: updatedTravel.checkList
-                  ?.where((element) => element.status == "checked")
-                  .length);
+      currentTravel = (state as _Ready).currentTravel.copyWith(
+          travel: updatedTravel,
+          completedCheckList: updatedTravel.checkList
+              ?.where((element) => element.status == "checked")
+              .length);
       travelsRepository.cacheCurrentTravel(
           travelCache: TravelCache(
               travellerId: TravellerProfileRepository.profile.id,
               status: "unsynced",
-              travel: updatedCurrentTravel.travel));
-      currentTravelRepository.updateCurrentTravel(updatedCurrentTravel);
-      emit((state as _Ready).copyWith(currentTravel: updatedCurrentTravel));
+              travel: currentTravel.travel));
+      currentTravelRepository.updateCurrentTravel(currentTravel);
+      emit((state as _Ready).copyWith(currentTravel: currentTravel));
     } catch (err) {
       debugPrint(err.toString());
     }
