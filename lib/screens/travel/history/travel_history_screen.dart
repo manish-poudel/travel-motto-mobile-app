@@ -49,13 +49,13 @@ class _TravelHistoryScreenState extends State<TravelHistoryScreen> {
             }, ready: (travels) {
               return travels.isEmpty
                   ? const Center(child: Text("No travel history"))
-                  : ListView.separated(
-                      separatorBuilder: (context, index) {
-                        return Divider(
-                          thickness: 1,
-                          color: Colors.grey.shade300,
-                        );
-                      },
+                  : ListView.builder(
+                      // separatorBuilder: (context, index) {
+                      //   return Divider(
+                      //     thickness: 1,
+                      //     color: Colors.grey.shade300,
+                      //   );
+                      // },
                       itemCount: travels.length,
                       itemBuilder: (context, index) {
                         return Padding(
