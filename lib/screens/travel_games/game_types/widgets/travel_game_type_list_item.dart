@@ -14,8 +14,10 @@ class TravelGameTypeListItem extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           child: Container(
             color: Colors.grey[100],
-            child: Image.network(
-              travelGameType.photoUrl,
+            child: FadeInImage.assetNetwork(
+              placeholder: 'assets/images/loading.gif',
+              placeholderFit: BoxFit.scaleDown,
+              image: travelGameType.photoUrl,
               height: 120,
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.fitWidth,
@@ -27,11 +29,11 @@ class TravelGameTypeListItem extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Container(
             decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.4),
+                color: Colors.black.withOpacity(0.6),
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black.withOpacity(0.4),
+                      color: Colors.black.withOpacity(0.0),
                       offset: const Offset(0, -1),
                       blurRadius: 1.0)
                 ]),

@@ -60,8 +60,10 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                               ? Stack(
                                   alignment: Alignment.bottomRight,
                                   children: [
-                                    Image.network(
-                                      travelGame.photoUrl!,
+                                    FadeInImage.assetNetwork(
+                                      placeholder: 'assets/images/loading.gif',
+                                      placeholderFit: BoxFit.scaleDown,
+                                      image: travelGame.photoUrl!,
                                       height: 200,
                                       width: double.infinity,
                                       fit: BoxFit.fitWidth,

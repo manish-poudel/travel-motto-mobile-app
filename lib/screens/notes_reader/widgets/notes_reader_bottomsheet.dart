@@ -6,6 +6,7 @@ import 'package:travel_motto/screens/trash_note/widgets/allow_trash_by_author.da
 import 'package:travel_motto/screens/trash_note/widgets/allow_trash_by_reader.dart';
 import 'package:travel_motto/screens/trash_note/widgets/cancel_trash_request.dart';
 import 'package:travel_motto/screens/trash_note/widgets/request_for_trash.dart';
+import 'package:travel_motto/widgets/something_went_wrong.dart';
 
 class NotesReaderBottomSheet extends StatefulWidget {
   final NotesReaderBloc notesReaderBloc;
@@ -50,9 +51,7 @@ class _NotesReaderBottomSheetState extends State<NotesReaderBottomSheet> {
                 showLoading: requestState == TrashNoteRequestProcess.loading);
       }, failed: (message) {
         return const Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text("Something went wrong."),
-        );
+            padding: EdgeInsets.all(16.0), child: SomethingWentWrong());
       });
     }, listener: (context, state) {
       state.when(

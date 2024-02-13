@@ -95,9 +95,9 @@ flutter:
     - assets/images/woman.png
     - assets/images/man.png
     - assets/images/location_search.gif
+    - assets/images/loading.gif
     - assets/images/no_road.png
     - assets/images/paper.png
-    - assets/images/travel_car.png
     - assets/images/travel_placeholder.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -31,7 +31,8 @@ class TrashNoteBloc extends Bloc<TrashNoteEvent, TrashNoteState> {
 
   _onEventStarted(Emitter<TrashNoteState> emit) async {
     try {
-      TravelLocation? location = await locationRepository.getCurrentLocation();
+      TravelLocation? location =
+          await locationRepository.getCurrentLocation(refresh: true);
       if (location == null) {
         return emit(const TrashNoteState.failed(
             message: "You have not enabled your location!"));
@@ -69,7 +70,8 @@ class TrashNoteBloc extends Bloc<TrashNoteEvent, TrashNoteState> {
             message: "Unable to process the request"));
       }
     } catch (err) {
-      return emit(const TrashNoteState.failed(message: "Something went wrong"));
+      return emit(
+          const TrashNoteState.failed(message: "Something went wrong."));
     }
   }
 

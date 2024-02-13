@@ -18,8 +18,10 @@ class TravelGameOrganiserListItem extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(12)),
               child: Container(
                 color: Colors.grey[100],
-                child: Image.network(
-                  travelGameOrganiser.photoUrl,
+                child: FadeInImage.assetNetwork(
+                  placeholder: 'assets/images/loading.gif',
+                  placeholderFit: BoxFit.scaleDown,
+                  image: travelGameOrganiser.photoUrl,
                   height: 80,
                   width: 80,
                   fit: BoxFit.fitHeight,

@@ -97,7 +97,8 @@ class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
                                     },
                                     child: const Text(
                                       "Want to organise game? Learn how",
-                                      style: TextStyle(color: Colors.grey),
+                                      style: TextStyle(
+                                          color: Colors.grey, fontSize: 12),
                                     )),
                               )
                             ],
