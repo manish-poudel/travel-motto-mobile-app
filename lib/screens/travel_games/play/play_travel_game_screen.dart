@@ -60,8 +60,10 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                               ? Stack(
                                   alignment: Alignment.bottomRight,
                                   children: [
-                                    Image.network(
-                                      travelGame.photoUrl!,
+                                    FadeInImage.assetNetwork(
+                                      placeholder: 'assets/images/loading.gif',
+                                      placeholderFit: BoxFit.scaleDown,
+                                      image: travelGame.photoUrl!,
                                       height: 200,
                                       width: double.infinity,
                                       fit: BoxFit.fitWidth,
@@ -116,7 +118,7 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                                     top: 8.0,
                                   ),
                                   child: Text(
-                                    "${travelGame.question}?",
+                                    travelGame.question,
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black87),
@@ -162,8 +164,10 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                                                         FontWeight.bold),
                                               ),
                                               onPressed: () {
-                                                if (travelGame.answer ==
+                                                if (travelGame.answer
+                                                        .toLowerCase() ==
                                                     _answerController.text
+                                                        .toLowerCase()
                                                         .trim()) {
                                                   showRoundedConfirmModalBottomSheet(
                                                       title:

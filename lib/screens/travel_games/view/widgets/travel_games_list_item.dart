@@ -55,7 +55,10 @@ class TravelGamesListItem extends StatelessWidget {
                                       travelGame.fullAddress,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(fontSize: 12),
+                                      style: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
                                     ),
                                   ),
                                 ),

@@ -227,6 +227,7 @@ class _SettingsViewState extends State<SettingsView> {
                                             visualDensity: const VisualDensity(
                                                 horizontal: 0, vertical: 0),
                                           ),
+
                                           SettingsListItem(
                                               onTap: () async {
                                                 await LauncherUtils.launchWebsite(
@@ -238,6 +239,17 @@ class _SettingsViewState extends State<SettingsView> {
                                                   const VisualDensity(
                                                       horizontal: 0,
                                                       vertical: -4)),
+                                          SettingsListItem(
+                                              onTap: () async {
+                                                await LauncherUtils.launchWebsite(
+                                                    url:
+                                                        "https://sites.google.com/view/travelmotto/support");
+                                              },
+                                              title: "Support",
+                                              visualDensity:
+                                                  const VisualDensity(
+                                                      horizontal: 0,
+                                                      vertical: 0)),
                                           const Padding(
                                             padding: EdgeInsets.only(
                                                 left: 16.0, top: 32),
