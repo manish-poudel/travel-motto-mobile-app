@@ -8,7 +8,9 @@ class TravelHistoryListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Material(
+      color: Colors.white,
+      elevation: 1,
       child: SizedBox(
         width: double.infinity,
         child: Padding(

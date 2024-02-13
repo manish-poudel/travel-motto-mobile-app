@@ -118,7 +118,7 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                                     top: 8.0,
                                   ),
                                   child: Text(
-                                    "${travelGame.question}?",
+                                    travelGame.question,
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black87),
@@ -164,8 +164,10 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                                                         FontWeight.bold),
                                               ),
                                               onPressed: () {
-                                                if (travelGame.answer ==
+                                                if (travelGame.answer
+                                                        .toLowerCase() ==
                                                     _answerController.text
+                                                        .toLowerCase()
                                                         .trim()) {
                                                   showRoundedConfirmModalBottomSheet(
                                                       title:

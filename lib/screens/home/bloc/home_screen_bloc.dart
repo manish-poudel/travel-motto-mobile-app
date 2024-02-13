@@ -4,6 +4,8 @@ import 'package:travel_motto/models/travel_location/travel_location.dart';
 import 'package:travel_motto/repositories/current_travel_repository.dart';
 import 'package:travel_motto/repositories/location_repository.dart';
 import 'package:travel_motto/repositories/traveller_profile_repository.dart';
+// ignore: unused_import
+import 'package:firebase_in_app_messaging/firebase_in_app_messaging.dart';
 
 part 'home_screen_event.dart';
 part 'home_screen_state.dart';
