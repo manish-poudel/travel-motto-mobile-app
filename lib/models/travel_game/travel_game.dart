@@ -9,6 +9,7 @@ part 'travel_game.freezed.dart';
 class TravelGame with _$TravelGame {
   factory TravelGame(
       {required String id,
+      required String gameTypeId,
       required List<double> location,
       required String question,
       required String answer,

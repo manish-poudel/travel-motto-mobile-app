@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:travel_motto/models/travel_game_organiser.dart/travel_game_organiser.dart';
 import 'package:travel_motto/repositories/travel_games_repository.dart';

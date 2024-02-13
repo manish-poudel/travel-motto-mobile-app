@@ -21,6 +21,7 @@ TravelGame _$TravelGameFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TravelGame {
   String get id => throw _privateConstructorUsedError;
+  String get gameTypeId => throw _privateConstructorUsedError;
   List<double> get location => throw _privateConstructorUsedError;
   String get question => throw _privateConstructorUsedError;
   String get answer => throw _privateConstructorUsedError;
@@ -54,6 +55,7 @@ abstract class $TravelGameCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String gameTypeId,
       List<double> location,
       String question,
       String answer,
@@ -87,6 +89,7 @@ class _$TravelGameCopyWithImpl<$Res, $Val extends TravelGame>
   @override
   $Res call({
     Object? id = null,
+    Object? gameTypeId = null,
     Object? location = null,
     Object? question = null,
     Object? answer = null,
@@ -109,6 +112,10 @@ class _$TravelGameCopyWithImpl<$Res, $Val extends TravelGame>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      gameTypeId: null == gameTypeId
+          ? _value.gameTypeId
+          : gameTypeId // ignore: cast_nullable_to_non_nullable
               as String,
       location: null == location
           ? _value.location
@@ -192,6 +199,7 @@ abstract class _$$TravelGameImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
+      String gameTypeId,
       List<double> location,
       String question,
       String answer,
@@ -223,6 +231,7 @@ class __$$TravelGameImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? gameTypeId = null,
     Object? location = null,
     Object? question = null,
     Object? answer = null,
@@ -245,6 +254,10 @@ class __$$TravelGameImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      gameTypeId: null == gameTypeId
+          ? _value.gameTypeId
+          : gameTypeId // ignore: cast_nullable_to_non_nullable
               as String,
       location: null == location
           ? _value._location
@@ -323,6 +336,7 @@ class __$$TravelGameImplCopyWithImpl<$Res>
 class _$TravelGameImpl implements _TravelGame {
   _$TravelGameImpl(
       {required this.id,
+      required this.gameTypeId,
       required final List<double> location,
       required this.question,
       required this.answer,
@@ -347,6 +361,8 @@ class _$TravelGameImpl implements _TravelGame {
 
   @override
   final String id;
+  @override
+  final String gameTypeId;
   final List<double> _location;
   @override
   List<double> get location {
@@ -391,7 +407,7 @@ class _$TravelGameImpl implements _TravelGame {
 
   @override
   String toString() {
-    return 'TravelGame(id: $id, location: $location, question: $question, answer: $answer, notes: $notes, createdAt: $createdAt, photoUrl: $photoUrl, allowRadius: $allowRadius, fullAddress: $fullAddress, isOwner: $isOwner, author: $author, lockedNotes: $lockedNotes, organiserId: $organiserId, photoOwner: $photoOwner, photoSource: $photoSource, passCode: $passCode, passCodeHint: $passCodeHint, photoOwnerLink: $photoOwnerLink)';
+    return 'TravelGame(id: $id, gameTypeId: $gameTypeId, location: $location, question: $question, answer: $answer, notes: $notes, createdAt: $createdAt, photoUrl: $photoUrl, allowRadius: $allowRadius, fullAddress: $fullAddress, isOwner: $isOwner, author: $author, lockedNotes: $lockedNotes, organiserId: $organiserId, photoOwner: $photoOwner, photoSource: $photoSource, passCode: $passCode, passCodeHint: $passCodeHint, photoOwnerLink: $photoOwnerLink)';
   }
 
   @override
@@ -400,6 +416,8 @@ class _$TravelGameImpl implements _TravelGame {
         (other.runtimeType == runtimeType &&
             other is _$TravelGameImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.gameTypeId, gameTypeId) ||
+                other.gameTypeId == gameTypeId) &&
             const DeepCollectionEquality().equals(other._location, _location) &&
             (identical(other.question, question) ||
                 other.question == question) &&
@@ -433,26 +451,28 @@ class _$TravelGameImpl implements _TravelGame {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      const DeepCollectionEquality().hash(_location),
-      question,
-      answer,
-      notes,
-      createdAt,
-      photoUrl,
-      allowRadius,
-      fullAddress,
-      isOwner,
-      author,
-      lockedNotes,
-      organiserId,
-      photoOwner,
-      photoSource,
-      passCode,
-      passCodeHint,
-      photoOwnerLink);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        gameTypeId,
+        const DeepCollectionEquality().hash(_location),
+        question,
+        answer,
+        notes,
+        createdAt,
+        photoUrl,
+        allowRadius,
+        fullAddress,
+        isOwner,
+        author,
+        lockedNotes,
+        organiserId,
+        photoOwner,
+        photoSource,
+        passCode,
+        passCodeHint,
+        photoOwnerLink
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -471,6 +491,7 @@ class _$TravelGameImpl implements _TravelGame {
 abstract class _TravelGame implements TravelGame {
   factory _TravelGame(
       {required final String id,
+      required final String gameTypeId,
       required final List<double> location,
       required final String question,
       required final String answer,
@@ -494,6 +515,8 @@ abstract class _TravelGame implements TravelGame {
 
   @override
   String get id;
+  @override
+  String get gameTypeId;
   @override
   List<double> get location;
   @override

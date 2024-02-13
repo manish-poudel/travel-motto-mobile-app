@@ -78,7 +78,7 @@ class _SearchPlaceScreenState extends State<SearchPlaceScreen> {
                                         fontSize: 12, color: Colors.black87),
                                   ),
                                   Text(
-                                    "Search powered by OpenStreetMap (Nominatim)",
+                                    "Search powered by OpenStreetMap",
                                     style: TextStyle(
                                         fontSize: 12, color: Colors.black54),
                                   ),

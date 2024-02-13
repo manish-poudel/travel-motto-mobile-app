@@ -77,20 +77,15 @@ class _ScanNotesScreenState extends State<ScanNotesScreen> {
                                     ),
                                     onPressed: () =>
                                         Navigator.of(context).pop()),
-                                actions: [
-                                  IconButton(
-                                      onPressed: () {
-                                        _bloc.add(const ScanNotesEvent.clear());
-                                      },
-                                      icon: const Icon(Icons.clear))
-                                ],
                                 title: const Text(
                                   "Notes",
                                   style: TextStyle(fontSize: 16),
                                 ),
                               ),
                               body: locationNotes.isEmpty
-                                  ? const NoLocationNotes()
+                                  ? NoLocationNotes(
+                                      type: widget.type,
+                                    )
                                   : LocationNotesList(
                                       locationNotes: locationNotes));
                         }
@@ -107,6 +102,12 @@ class _ScanNotesScreenState extends State<ScanNotesScreen> {
                     backgroundColor: Colors.white,
                     appBar: AppBar(
                       backgroundColor: Colors.white,
+                      leading: IconButton(
+                          icon: const Icon(
+                            Icons.arrow_back_ios,
+                            size: 16,
+                          ),
+                          onPressed: () => Navigator.of(context).pop()),
                     ),
                     body: Center(child: SomethingWentWrong(onRetry: () {
                       _bloc.add(ScanNotesEvent.started(type: widget.type));
