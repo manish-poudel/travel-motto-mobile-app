@@ -23,6 +23,7 @@ mixin _$TravelGameType {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get photoUrl => throw _privateConstructorUsedError;
+  String get organiserId => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime get updatedAt => throw _privateConstructorUsedError;
   @TimestampConverter()
@@ -44,6 +45,7 @@ abstract class $TravelGameTypeCopyWith<$Res> {
       {String id,
       String name,
       String photoUrl,
+      String organiserId,
       @TimestampConverter() DateTime updatedAt,
       @TimestampConverter() DateTime createdAt});
 }
@@ -64,6 +66,7 @@ class _$TravelGameTypeCopyWithImpl<$Res, $Val extends TravelGameType>
     Object? id = null,
     Object? name = null,
     Object? photoUrl = null,
+    Object? organiserId = null,
     Object? updatedAt = null,
     Object? createdAt = null,
   }) {
@@ -79,6 +82,10 @@ class _$TravelGameTypeCopyWithImpl<$Res, $Val extends TravelGameType>
       photoUrl: null == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      organiserId: null == organiserId
+          ? _value.organiserId
+          : organiserId // ignore: cast_nullable_to_non_nullable
               as String,
       updatedAt: null == updatedAt
           ? _value.updatedAt
@@ -104,6 +111,7 @@ abstract class _$$TravelGameTypeImplCopyWith<$Res>
       {String id,
       String name,
       String photoUrl,
+      String organiserId,
       @TimestampConverter() DateTime updatedAt,
       @TimestampConverter() DateTime createdAt});
 }
@@ -122,6 +130,7 @@ class __$$TravelGameTypeImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? photoUrl = null,
+    Object? organiserId = null,
     Object? updatedAt = null,
     Object? createdAt = null,
   }) {
@@ -137,6 +146,10 @@ class __$$TravelGameTypeImplCopyWithImpl<$Res>
       photoUrl: null == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      organiserId: null == organiserId
+          ? _value.organiserId
+          : organiserId // ignore: cast_nullable_to_non_nullable
               as String,
       updatedAt: null == updatedAt
           ? _value.updatedAt
@@ -157,6 +170,7 @@ class _$TravelGameTypeImpl implements _TravelGameType {
       {required this.id,
       required this.name,
       required this.photoUrl,
+      required this.organiserId,
       @TimestampConverter() required this.updatedAt,
       @TimestampConverter() required this.createdAt});
 
@@ -170,6 +184,8 @@ class _$TravelGameTypeImpl implements _TravelGameType {
   @override
   final String photoUrl;
   @override
+  final String organiserId;
+  @override
   @TimestampConverter()
   final DateTime updatedAt;
   @override
@@ -178,7 +194,7 @@ class _$TravelGameTypeImpl implements _TravelGameType {
 
   @override
   String toString() {
-    return 'TravelGameType(id: $id, name: $name, photoUrl: $photoUrl, updatedAt: $updatedAt, createdAt: $createdAt)';
+    return 'TravelGameType(id: $id, name: $name, photoUrl: $photoUrl, organiserId: $organiserId, updatedAt: $updatedAt, createdAt: $createdAt)';
   }
 
   @override
@@ -190,6 +206,8 @@ class _$TravelGameTypeImpl implements _TravelGameType {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.photoUrl, photoUrl) ||
                 other.photoUrl == photoUrl) &&
+            (identical(other.organiserId, organiserId) ||
+                other.organiserId == organiserId) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.createdAt, createdAt) ||
@@ -198,8 +216,8 @@ class _$TravelGameTypeImpl implements _TravelGameType {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, photoUrl, updatedAt, createdAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, photoUrl, organiserId, updatedAt, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -221,6 +239,7 @@ abstract class _TravelGameType implements TravelGameType {
           {required final String id,
           required final String name,
           required final String photoUrl,
+          required final String organiserId,
           @TimestampConverter() required final DateTime updatedAt,
           @TimestampConverter() required final DateTime createdAt}) =
       _$TravelGameTypeImpl;
@@ -234,6 +253,8 @@ abstract class _TravelGameType implements TravelGameType {
   String get name;
   @override
   String get photoUrl;
+  @override
+  String get organiserId;
   @override
   @TimestampConverter()
   DateTime get updatedAt;

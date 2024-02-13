@@ -11,6 +11,7 @@ class TravelGameType with _$TravelGameType {
       {required String id,
       required String name,
       required String photoUrl,
+      required String organiserId,
       @TimestampConverter() required DateTime updatedAt,
       @TimestampConverter() required DateTime createdAt}) = _TravelGameType;
 

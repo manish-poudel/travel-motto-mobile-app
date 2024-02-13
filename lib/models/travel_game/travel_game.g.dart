@@ -9,6 +9,7 @@ part of 'travel_game.dart';
 _$TravelGameImpl _$$TravelGameImplFromJson(Map<String, dynamic> json) =>
     _$TravelGameImpl(
       id: json['id'] as String,
+      gameTypeId: json['gameTypeId'] as String,
       location: (json['location'] as List<dynamic>)
           .map((e) => (e as num).toDouble())
           .toList(),
@@ -34,6 +35,7 @@ _$TravelGameImpl _$$TravelGameImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$TravelGameImplToJson(_$TravelGameImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'gameTypeId': instance.gameTypeId,
       'location': instance.location,
       'question': instance.question,
       'answer': instance.answer,

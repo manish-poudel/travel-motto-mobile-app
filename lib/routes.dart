@@ -7,6 +7,7 @@ import 'package:travel_motto/models/location_notes/location_notes.dart';
 import 'package:travel_motto/models/open_street_location/os_location.dart';
 import 'package:travel_motto/models/travel_game/travel_game.dart';
 import 'package:travel_motto/models/travel_game_organiser.dart/travel_game_organiser.dart';
+import 'package:travel_motto/models/travel_game_type/travel_game_type.dart';
 import 'package:travel_motto/repositories/repository_container.dart';
 import 'package:travel_motto/screens/add_notes/add_note_screen.dart';
 import 'package:travel_motto/screens/add_notes/bloc/add_note_bloc.dart';
@@ -198,12 +199,11 @@ final GoRouter routes = GoRouter(
         name: 'travel_games',
         path: '/travel_games',
         builder: (BuildContext context, GoRouterState state) {
-          String organiserId = state.extra as String;
           return BlocProvider(
               create: (_) => TravelGamesBloc(
                   travelGamesRepository:
                       context.read<RepositoryContainer>().travelGamesRepository,
-                  organiserId: organiserId),
+                  travelGameType: state.extra as TravelGameType),
               child: const TravelGamesScreen());
         }),
     GoRoute(

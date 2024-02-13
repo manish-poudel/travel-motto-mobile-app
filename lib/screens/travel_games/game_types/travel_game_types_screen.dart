@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:travel_motto/screens/travel_games/game_types/bloc/travel_game_types_bloc.dart';
 import 'package:travel_motto/screens/travel_games/game_types/widgets/travel_game_type_list_item.dart';
-import 'package:travel_motto/screens/travel_games/organisers/bloc/travel_game_organiser_bloc.dart';
-import 'package:travel_motto/screens/travel_games/organisers/widgets/travel_game_organiser_list_item.dart';
 import 'package:travel_motto/theme/theme.dart';
-import 'package:travel_motto/utils/launcher_utils.dart';
 
 import 'package:travel_motto/widgets/something_went_wrong.dart';
 
@@ -74,13 +72,12 @@ class _TravelGameTypeScreenState extends State<TravelGameTypeScreen> {
                                       itemBuilder: (context, index) {
                                         return Padding(
                                           padding: const EdgeInsets.only(
-                                              right: 16.0),
+                                              bottom: 16.0),
                                           child: GestureDetector(
                                             onTap: () {
-                                              // context.push('/travel_games',
-                                              //     extra: travelGameOrganisers[
-                                              //             index]
-                                              //         .id);
+                                              context.push('/travel_games',
+                                                  extra:
+                                                      travelGameTypes[index]);
                                             },
                                             child: TravelGameTypeListItem(
                                                 travelGameType:

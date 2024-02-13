@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:travel_motto/models/travel_game/travel_game.dart';
+import 'package:travel_motto/models/travel_game_type/travel_game_type.dart';
 import 'package:travel_motto/repositories/travel_games_repository.dart';
 
 part 'travel_games_event.dart';
@@ -9,9 +10,10 @@ part 'travel_games_bloc.freezed.dart';
 
 class TravelGamesBloc extends Bloc<TravelGamesEvent, TravelGamesState> {
   final TravelGamesRepository travelGamesRepository;
-  final String organiserId;
+  final TravelGameType travelGameType;
+
   TravelGamesBloc(
-      {required this.travelGamesRepository, required this.organiserId})
+      {required this.travelGamesRepository, required this.travelGameType})
       : super(const _Initial()) {
     on<TravelGamesEvent>((event, emit) async {
       await event.when(started: () async => await _onEventStarted(emit));
@@ -38,7 +40,9 @@ class TravelGamesBloc extends Bloc<TravelGamesEvent, TravelGamesState> {
       ];
 
       //emit(TravelGamesState.ready(travelGames: travelGames));
-      await travelGamesRepository.getTravelGames(organiserId).then((value) {
+      await travelGamesRepository
+          .getTravelGames(travelGameType.organiserId, travelGameType.id)
+          .then((value) {
         for (var element in value.docs) {
           travelGames.add(element.data());
         }

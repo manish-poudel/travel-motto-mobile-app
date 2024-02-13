@@ -32,15 +32,6 @@ class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
         child: Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              actions: [
-                TextButton(
-                    onPressed: () async {
-                      await LauncherUtils.launchWebsite(
-                          url:
-                              "https://sites.google.com/view/travelmotto/travel-games");
-                    },
-                    child: const Text("Be organiser"))
-              ],
               leading: IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -75,31 +66,40 @@ class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
                                     fontWeight: FontWeight.bold),
                               ),
                               Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 0.0),
-                                  child: ListView.builder(
-                                      padding: const EdgeInsets.only(top: 16.0),
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: travelGameOrganisers.length,
-                                      itemBuilder: (context, index) {
-                                        return Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 16.0),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              context.push('/travel_game_types',
-                                                  extra: travelGameOrganisers[
-                                                      index]);
-                                            },
-                                            child: TravelGameOrganiserListItem(
-                                                travelGameOrganiser:
-                                                    travelGameOrganisers[
-                                                        index]),
-                                          ),
-                                        );
-                                      }),
-                                ),
+                                child: ListView.builder(
+                                    padding: const EdgeInsets.only(top: 16.0),
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: travelGameOrganisers.length,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 16.0),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            context.push('/travel_game_types',
+                                                extra: travelGameOrganisers[
+                                                    index]);
+                                          },
+                                          child: TravelGameOrganiserListItem(
+                                              travelGameOrganiser:
+                                                  travelGameOrganisers[index]),
+                                        ),
+                                      );
+                                    }),
                               ),
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: TextButton(
+                                    onPressed: () async {
+                                      await LauncherUtils.launchWebsite(
+                                          url:
+                                              "https://sites.google.com/view/travelmotto/travel-games");
+                                    },
+                                    child: const Text(
+                                      "Want to organise game? Learn how",
+                                      style: TextStyle(color: Colors.grey),
+                                    )),
+                              )
                             ],
                           ),
                         );
