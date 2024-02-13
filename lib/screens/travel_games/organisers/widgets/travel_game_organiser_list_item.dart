@@ -10,7 +10,7 @@ class TravelGameOrganiserListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(0.0),
@@ -22,7 +22,7 @@ class TravelGameOrganiserListItem extends StatelessWidget {
                   travelGameOrganiser.photoUrl,
                   height: 80,
                   width: 80,
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.fitHeight,
                 ),
               ),
             ),

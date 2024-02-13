@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:travel_motto/screens/travel_games/game_types/bloc/travel_game_types_bloc.dart';
+import 'package:travel_motto/screens/travel_games/game_types/widgets/travel_game_type_list_item.dart';
 import 'package:travel_motto/screens/travel_games/organisers/bloc/travel_game_organiser_bloc.dart';
 import 'package:travel_motto/screens/travel_games/organisers/widgets/travel_game_organiser_list_item.dart';
 import 'package:travel_motto/theme/theme.dart';
@@ -8,21 +10,20 @@ import 'package:travel_motto/utils/launcher_utils.dart';
 
 import 'package:travel_motto/widgets/something_went_wrong.dart';
 
-class TravelGameOrganiserScreen extends StatefulWidget {
-  const TravelGameOrganiserScreen({super.key});
+class TravelGameTypeScreen extends StatefulWidget {
+  const TravelGameTypeScreen({super.key});
 
   @override
-  State<TravelGameOrganiserScreen> createState() =>
-      _TravelGameOrganiserScreenState();
+  State<TravelGameTypeScreen> createState() => _TravelGameTypeScreenState();
 }
 
-class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
-  late final TravelGameOrganiserBloc _bloc;
+class _TravelGameTypeScreenState extends State<TravelGameTypeScreen> {
+  late final TravelGameTypesBloc _bloc;
   @override
   void initState() {
     super.initState();
-    _bloc = context.read<TravelGameOrganiserBloc>();
-    _bloc.add(const TravelGameOrganiserEvent.started());
+    _bloc = context.read<TravelGameTypesBloc>();
+    _bloc.add(const TravelGameTypesEvent.started());
   }
 
   @override
@@ -32,15 +33,6 @@ class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
         child: Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              actions: [
-                TextButton(
-                    onPressed: () async {
-                      await LauncherUtils.launchWebsite(
-                          url:
-                              "https://sites.google.com/view/travelmotto/travel-games");
-                    },
-                    child: const Text("Be organiser"))
-              ],
               leading: IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios,
@@ -53,14 +45,13 @@ class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
               ),
             ),
-            body: BlocConsumer<TravelGameOrganiserBloc,
-                    TravelGameOrganiserState>(
+            body: BlocConsumer<TravelGameTypesBloc, TravelGameTypesState>(
                 builder: (context, state) {
                   return state.whenOrNull(initial: () {
                         return const Scaffold(
                             backgroundColor: Colors.white,
                             body: Center(child: CircularProgressIndicator()));
-                      }, ready: (travelGameOrganisers) {
+                      }, ready: (travelGameTypes) {
                         return Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
@@ -68,7 +59,7 @@ class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               const Text(
-                                "Choose organiser",
+                                "Choose game",
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Colors.black87,
@@ -79,22 +70,21 @@ class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
                                   padding: const EdgeInsets.only(top: 0.0),
                                   child: ListView.builder(
                                       padding: const EdgeInsets.only(top: 16.0),
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: travelGameOrganisers.length,
+                                      itemCount: travelGameTypes.length,
                                       itemBuilder: (context, index) {
                                         return Padding(
                                           padding: const EdgeInsets.only(
                                               right: 16.0),
                                           child: GestureDetector(
                                             onTap: () {
-                                              context.push('/travel_game_types',
-                                                  extra: travelGameOrganisers[
-                                                      index]);
+                                              // context.push('/travel_games',
+                                              //     extra: travelGameOrganisers[
+                                              //             index]
+                                              //         .id);
                                             },
-                                            child: TravelGameOrganiserListItem(
-                                                travelGameOrganiser:
-                                                    travelGameOrganisers[
-                                                        index]),
+                                            child: TravelGameTypeListItem(
+                                                travelGameType:
+                                                    travelGameTypes[index]),
                                           ),
                                         );
                                       }),
