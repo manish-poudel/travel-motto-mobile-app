@@ -29,7 +29,7 @@ class TravelGamesRepository {
         );
 
     return gamesReference
-        .orderBy('createdAt', descending: true)
+        .orderBy('createdAt', descending: false)
         .where("gameTypeId", isEqualTo: gameTypeId)
         .get();
   }
