@@ -20,18 +20,21 @@ mixin _$NotesReaderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(LocationNotes locationNotes) rebuild,
     required TResult Function() closeScreen,
+    required TResult Function() started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LocationNotes locationNotes)? rebuild,
     TResult? Function()? closeScreen,
+    TResult? Function()? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LocationNotes locationNotes)? rebuild,
     TResult Function()? closeScreen,
+    TResult Function()? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$NotesReaderEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Rebuild value) rebuild,
     required TResult Function(_CloseScreen value) closeScreen,
+    required TResult Function(_Started value) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Rebuild value)? rebuild,
     TResult? Function(_CloseScreen value)? closeScreen,
+    TResult? Function(_Started value)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Rebuild value)? rebuild,
     TResult Function(_CloseScreen value)? closeScreen,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -151,6 +157,7 @@ class _$RebuildImpl implements _Rebuild {
   TResult when<TResult extends Object?>({
     required TResult Function(LocationNotes locationNotes) rebuild,
     required TResult Function() closeScreen,
+    required TResult Function() started,
   }) {
     return rebuild(locationNotes);
   }
@@ -160,6 +167,7 @@ class _$RebuildImpl implements _Rebuild {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LocationNotes locationNotes)? rebuild,
     TResult? Function()? closeScreen,
+    TResult? Function()? started,
   }) {
     return rebuild?.call(locationNotes);
   }
@@ -169,6 +177,7 @@ class _$RebuildImpl implements _Rebuild {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LocationNotes locationNotes)? rebuild,
     TResult Function()? closeScreen,
+    TResult Function()? started,
     required TResult orElse(),
   }) {
     if (rebuild != null) {
@@ -182,6 +191,7 @@ class _$RebuildImpl implements _Rebuild {
   TResult map<TResult extends Object?>({
     required TResult Function(_Rebuild value) rebuild,
     required TResult Function(_CloseScreen value) closeScreen,
+    required TResult Function(_Started value) started,
   }) {
     return rebuild(this);
   }
@@ -191,6 +201,7 @@ class _$RebuildImpl implements _Rebuild {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Rebuild value)? rebuild,
     TResult? Function(_CloseScreen value)? closeScreen,
+    TResult? Function(_Started value)? started,
   }) {
     return rebuild?.call(this);
   }
@@ -200,6 +211,7 @@ class _$RebuildImpl implements _Rebuild {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Rebuild value)? rebuild,
     TResult Function(_CloseScreen value)? closeScreen,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) {
     if (rebuild != null) {
@@ -259,6 +271,7 @@ class _$CloseScreenImpl implements _CloseScreen {
   TResult when<TResult extends Object?>({
     required TResult Function(LocationNotes locationNotes) rebuild,
     required TResult Function() closeScreen,
+    required TResult Function() started,
   }) {
     return closeScreen();
   }
@@ -268,6 +281,7 @@ class _$CloseScreenImpl implements _CloseScreen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LocationNotes locationNotes)? rebuild,
     TResult? Function()? closeScreen,
+    TResult? Function()? started,
   }) {
     return closeScreen?.call();
   }
@@ -277,6 +291,7 @@ class _$CloseScreenImpl implements _CloseScreen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LocationNotes locationNotes)? rebuild,
     TResult Function()? closeScreen,
+    TResult Function()? started,
     required TResult orElse(),
   }) {
     if (closeScreen != null) {
@@ -290,6 +305,7 @@ class _$CloseScreenImpl implements _CloseScreen {
   TResult map<TResult extends Object?>({
     required TResult Function(_Rebuild value) rebuild,
     required TResult Function(_CloseScreen value) closeScreen,
+    required TResult Function(_Started value) started,
   }) {
     return closeScreen(this);
   }
@@ -299,6 +315,7 @@ class _$CloseScreenImpl implements _CloseScreen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Rebuild value)? rebuild,
     TResult? Function(_CloseScreen value)? closeScreen,
+    TResult? Function(_Started value)? started,
   }) {
     return closeScreen?.call(this);
   }
@@ -308,6 +325,7 @@ class _$CloseScreenImpl implements _CloseScreen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Rebuild value)? rebuild,
     TResult Function(_CloseScreen value)? closeScreen,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) {
     if (closeScreen != null) {
@@ -319,6 +337,114 @@ class _$CloseScreenImpl implements _CloseScreen {
 
 abstract class _CloseScreen implements NotesReaderEvent {
   const factory _CloseScreen() = _$CloseScreenImpl;
+}
+
+/// @nodoc
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$NotesReaderEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
+
+  @override
+  String toString() {
+    return 'NotesReaderEvent.started()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LocationNotes locationNotes) rebuild,
+    required TResult Function() closeScreen,
+    required TResult Function() started,
+  }) {
+    return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LocationNotes locationNotes)? rebuild,
+    TResult? Function()? closeScreen,
+    TResult? Function()? started,
+  }) {
+    return started?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LocationNotes locationNotes)? rebuild,
+    TResult Function()? closeScreen,
+    TResult Function()? started,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Rebuild value) rebuild,
+    required TResult Function(_CloseScreen value) closeScreen,
+    required TResult Function(_Started value) started,
+  }) {
+    return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Rebuild value)? rebuild,
+    TResult? Function(_CloseScreen value)? closeScreen,
+    TResult? Function(_Started value)? started,
+  }) {
+    return started?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Rebuild value)? rebuild,
+    TResult Function(_CloseScreen value)? closeScreen,
+    TResult Function(_Started value)? started,
+    required TResult orElse(),
+  }) {
+    if (started != null) {
+      return started(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Started implements NotesReaderEvent {
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc

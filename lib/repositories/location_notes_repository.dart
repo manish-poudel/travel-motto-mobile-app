@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:travel_motto/models/location_notes/location_notes.dart';
 import 'package:travel_motto/repositories/traveller_profile_repository.dart';
+import 'package:travel_motto/utils/debug_print.dart';
 
 class LocationNotesRepository {
   final reference = FirebaseFirestore.instance
@@ -162,5 +163,74 @@ class LocationNotesRepository {
     _locationNotes.removeAt(index);
     _locationNotes.insert(index, updatedLocationNotes);
     _locationNotesController.sink.add(_locationNotes);
+
+    FirebaseFirestore.instance
+        .collection("location_notes")
+        .doc(updatedLocationNotes.noteId)
+        .update(updatedLocationNotes.toJson());
+  }
+
+  Future<bool> updateLocationNoteViewCount(
+      {required LocationNotes updatedLocationNotes, required String viewerId}) {
+    return FirebaseFirestore.instance.runTransaction((transaction) async {
+      final noteViewsRef = FirebaseFirestore.instance
+          .collection("location_notes")
+          .doc(updatedLocationNotes.noteId)
+          .collection("viewers")
+          .doc(viewerId);
+      return transaction.get(noteViewsRef).then((value) {
+        if (value.exists) {
+          debugPrint("User has already viewed this note");
+          return false;
+        } else {
+          transaction.set(noteViewsRef, {"viewedOn": DateTime.now()});
+          debugPrint("Notes view updated...");
+          return true;
+        }
+      }).catchError((err) {
+        debugPrint(err.toString());
+        return false;
+      });
+    });
   }
 }
+
+
+    // return FirebaseFirestore.instance.runTransaction((transaction) {
+    //   return transaction.get(playerDocRef).then((playerDoc) {
+    //     // player doc exists
+    //     if (playerDoc.exists) {
+    //       // if its already completed no need to do anything
+    //       if (playerDoc.data()?.completed != true &&
+    //           travelGamePlayer.completed) {
+    //         int points = TravellerProfileRepository.profile.points == null
+    //             ? gamePlayPoints
+    //             : TravellerProfileRepository.profile.points! + gamePlayPoints;
+    //         transaction.update(
+    //             travelerRef,
+    //             TravellerProfileRepository.profile
+    //                 .copyWith(points: points)
+    //                 .toJson());
+    //         transaction.update(playerDocRef, travelGamePlayer.toJson());
+    //         return true;
+    //       }
+    //       debugPrint(
+    //           "Player has already completed this task.. no need to write");
+    //       return false;
+    //     } else {
+    //       transaction.set(playerDocRef, travelGamePlayer);
+    //       //transaction.set(documentReference, data)
+    //       if (travelGamePlayer.completed) {
+    //         int points = TravellerProfileRepository.profile.points == null
+    //             ? gamePlayPoints
+    //             : TravellerProfileRepository.profile.points! + gamePlayPoints;
+    //         transaction.update(
+    //             travelerRef,
+    //             TravellerProfileRepository.profile
+    //                 .copyWith(points: points)
+    //                 .toJson());
+    //       }
+    //       return true;
+    //     }
+    //   });
+    // });
