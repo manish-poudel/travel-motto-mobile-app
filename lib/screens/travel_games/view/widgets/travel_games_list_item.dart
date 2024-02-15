@@ -16,7 +16,9 @@ class TravelGamesListItem extends StatelessWidget {
           : Container(
               color: Colors.white,
               child: Stack(
-                alignment: Alignment.center,
+                alignment: travelGame.passCode == null
+                    ? Alignment.topRight
+                    : Alignment.center,
                 children: [
                   Stack(
                     alignment: Alignment.bottomRight,
@@ -96,7 +98,30 @@ class TravelGamesListItem extends StatelessWidget {
                     ],
                   ),
                   travelGame.passCode == null
-                      ? const SizedBox.shrink()
+                      ? Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.6),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(8)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.0),
+                                        offset: const Offset(0, -1),
+                                        blurRadius: 1.0)
+                                  ]),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Reward: ${travelGame.points} points",
+                                  style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              )),
+                        )
                       : const Align(
                           alignment: Alignment.center,
                           child: Column(
