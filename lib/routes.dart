@@ -173,6 +173,9 @@ final GoRouter routes = GoRouter(
           LocationNotes locationNotes = state.extra as LocationNotes;
           return BlocProvider(
               create: (_) => NotesReaderBloc(
+                    locationNotesRepository: context
+                        .read<RepositoryContainer>()
+                        .locationNotesRepository,
                     locationNotes: locationNotes,
                   ),
               child: const NotesReaderScreen());

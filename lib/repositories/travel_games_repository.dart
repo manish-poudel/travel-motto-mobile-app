@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:travel_motto/models/profile/traveller_profile.dart';
 import 'package:travel_motto/models/travel_game/travel_game.dart';
 import 'package:travel_motto/models/travel_game_organiser.dart/travel_game_organiser.dart';
 import 'package:travel_motto/models/travel_game_player/travel_game_player.dart';
 import 'package:travel_motto/models/travel_game_type/travel_game_type.dart';
+import 'package:travel_motto/repositories/traveller_profile_repository.dart';
 import 'package:travel_motto/utils/debug_print.dart';
 
 class TravelGamesRepository {
@@ -27,7 +29,7 @@ class TravelGamesRepository {
         );
 
     return gamesReference
-        .orderBy('createdAt', descending: true)
+        .orderBy('createdAt', descending: false)
         .where("gameTypeId", isEqualTo: gameTypeId)
         .get();
   }
@@ -72,6 +74,7 @@ class TravelGamesRepository {
 
   Future<bool> setTravelGamePlayer(
       {required TravelGame travelGame,
+      required int gamePlayPoints,
       required TravelGamePlayer travelGamePlayer}) {
     DocumentReference<TravelGamePlayer> playerDocRef = FirebaseFirestore
         .instance
@@ -87,6 +90,15 @@ class TravelGamesRepository {
           toFirestore: (travelGamePlayer, _) => travelGamePlayer.toJson(),
         );
 
+    DocumentReference<TravellerProfile> travelerRef = FirebaseFirestore.instance
+        .collection("travellers")
+        .doc(travelGamePlayer.id)
+        .withConverter<TravellerProfile>(
+          fromFirestore: (snapshots, _) =>
+              TravellerProfile.fromJson(snapshots.data()!),
+          toFirestore: (profile, _) => profile.toJson(),
+        );
+
     return FirebaseFirestore.instance.runTransaction((transaction) {
       return transaction.get(playerDocRef).then((playerDoc) {
         // player doc exists
@@ -94,6 +106,14 @@ class TravelGamesRepository {
           // if its already completed no need to do anything
           if (playerDoc.data()?.completed != true &&
               travelGamePlayer.completed) {
+            int points = TravellerProfileRepository.profile.points == null
+                ? gamePlayPoints
+                : TravellerProfileRepository.profile.points! + gamePlayPoints;
+            transaction.update(
+                travelerRef,
+                TravellerProfileRepository.profile
+                    .copyWith(points: points)
+                    .toJson());
             transaction.update(playerDocRef, travelGamePlayer.toJson());
             return true;
           }
@@ -102,6 +122,17 @@ class TravelGamesRepository {
           return false;
         } else {
           transaction.set(playerDocRef, travelGamePlayer);
+          //transaction.set(documentReference, data)
+          if (travelGamePlayer.completed) {
+            int points = TravellerProfileRepository.profile.points == null
+                ? gamePlayPoints
+                : TravellerProfileRepository.profile.points! + gamePlayPoints;
+            transaction.update(
+                travelerRef,
+                TravellerProfileRepository.profile
+                    .copyWith(points: points)
+                    .toJson());
+          }
           return true;
         }
       });

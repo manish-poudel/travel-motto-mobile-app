@@ -22,6 +22,7 @@ class _NotesReaderScreenState extends State<NotesReaderScreen> {
   void initState() {
     super.initState();
     _bloc = context.read<NotesReaderBloc>();
+    _bloc.add(const NotesReaderEvent.started());
   }
 
   /// Open modal bottom sheet for deleting profile
@@ -61,21 +62,32 @@ class _NotesReaderScreenState extends State<NotesReaderScreen> {
                 return const Scaffold(
                     body: Center(child: CircularProgressIndicator()));
               }, ready: (locationNotes) {
+                bool showTrashOption = TravellerProfileRepository.profile.id ==
+                        locationNotes.authorId ||
+                    locationNotes.state == "trash_requested";
                 return Scaffold(
                     backgroundColor: Colors.white,
                     appBar: AppBar(
-                      actions: TravellerProfileRepository.profile.id ==
-                                  locationNotes.authorId ||
-                              locationNotes.state == "trash_requested"
-                          ? [
-                              IconButton(
-                                  onPressed: () => _openDeleteModalBottomSheet(
-                                      locationNotes),
-                                  icon: const Icon(
-                                    Icons.delete,
-                                  ))
-                            ]
-                          : null,
+                      actions: [
+                        Padding(
+                          padding:
+                              EdgeInsets.only(right: showTrashOption ? 0 : 16),
+                          child: Text(
+                            "${locationNotes.views} views",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black54),
+                          ),
+                        ),
+                        showTrashOption
+                            ? IconButton(
+                                onPressed: () =>
+                                    _openDeleteModalBottomSheet(locationNotes),
+                                icon: const Icon(
+                                  Icons.delete,
+                                ))
+                            : const SizedBox.shrink()
+                      ],
                       backgroundColor: Colors.white,
                       leading: IconButton(
                           icon: const Icon(

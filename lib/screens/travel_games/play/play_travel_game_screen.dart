@@ -29,24 +29,38 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
   Widget build(BuildContext context) {
     return Theme(
       data: AppTheme.getTheme(),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text(
-            "Play",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
-          ),
-          backgroundColor: Colors.white,
-          leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                size: 16,
+      child: BlocConsumer<PlayTravelGameBloc, PlayTravelGameState>(
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              actions: state.whenOrNull(
+                ready: (allowPlay, distanceFromLocation, travelGame) {
+                  return travelGame.totalPlayers != null
+                      ? [
+                          const Icon(Icons.people),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(right: 16.0, left: 8),
+                            child: Text(travelGame.totalPlayers.toString()),
+                          )
+                        ]
+                      : null;
+                },
               ),
-              onPressed: () => Navigator.of(context).pop()),
-        ),
-        body: BlocConsumer<PlayTravelGameBloc, PlayTravelGameState>(
-          builder: (context, state) {
-            return state.whenOrNull(
+              title: const Text(
+                "Play",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+              ),
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 16,
+                  ),
+                  onPressed: () => Navigator.of(context).pop()),
+            ),
+            body: state.whenOrNull(
                   initial: () {
                     return const Center(child: CircularProgressIndicator());
                   },
@@ -229,10 +243,10 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                   onRetry: () {
                     _bloc.add(const PlayTravelGameEvent.started());
                   },
-                );
-          },
-          listener: (context, state) {},
-        ),
+                ),
+          );
+        },
+        listener: (context, state) {},
       ),
     );
   }
