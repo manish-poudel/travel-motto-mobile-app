@@ -5,7 +5,6 @@ import 'package:travel_motto/models/travel_game_organiser.dart/travel_game_organ
 import 'package:travel_motto/models/travel_game_player/travel_game_player.dart';
 import 'package:travel_motto/models/travel_game_type/travel_game_type.dart';
 import 'package:travel_motto/repositories/traveller_profile_repository.dart';
-import 'package:travel_motto/repositories/travels_repository.dart';
 import 'package:travel_motto/utils/debug_print.dart';
 
 class TravelGamesRepository {

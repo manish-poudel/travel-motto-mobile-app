@@ -51,7 +51,7 @@ class PlayTravelGameBloc
       bool allowPlay = distanceBetweenLocationAndUser <= travelGame.allowRadius;
 
       emit(PlayTravelGameState.ready(
-          allowPlay: true,
+          allowPlay: allowPlay,
           distanceFromLocation: distanceBetweenLocationAndUser.round(),
           travelGame: travelGame));
     } catch (err) {
