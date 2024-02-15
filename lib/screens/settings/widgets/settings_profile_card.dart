@@ -1,17 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:travel_motto/widgets/chip_text.dart';
 
 class SettingsProfileCard extends StatelessWidget {
   final String fullName;
   final String rank;
   final String? photoUrl;
+  final int? points;
   final Function()? onEditProfilePressed;
   const SettingsProfileCard(
       {super.key,
       required this.fullName,
       required this.rank,
       this.photoUrl,
+      this.points,
       this.onEditProfilePressed});
 
   @override
@@ -49,19 +52,28 @@ class SettingsProfileCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  fullName,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w500, fontSize: 16),
+                ),
                 Row(
                   children: [
                     Text(
-                      fullName,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      "Rank: $rank",
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.7), fontSize: 12),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: ChipText(
+                        text: "${points ?? 0} points ",
+                        textColor: Colors.black54,
+                        backGroundColor: Colors.greenAccent,
+                        borderColor: Colors.greenAccent,
+                      ),
+                    )
                   ],
-                ),
-                Text(
-                  "Rank: $rank",
-                  style: TextStyle(
-                      color: Colors.black.withOpacity(0.7), fontSize: 12),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),

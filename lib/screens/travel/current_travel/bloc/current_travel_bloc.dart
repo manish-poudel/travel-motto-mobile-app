@@ -87,15 +87,14 @@ class CurrentTravelBloc extends Bloc<CurrentTravelEvent, CurrentTravelState> {
             currentLocation.position.latitude,
             currentLocation.position.longitude
           ]);
+
       await travelsRepository
           .updateCurrentTravel(travel: updatedTravel)
           .then((value) {
-        CurrentTravel updatedCurrentTravel =
-            currentTravel.copyWith(travel: updatedTravel);
+        currentTravel = currentTravel.copyWith(travel: updatedTravel);
         emit((state as _Ready).copyWith(
-            currentTravel: updatedCurrentTravel,
-            saveState: const SaveState.saved()));
-        currentTravelRepository.updateCurrentTravel(updatedCurrentTravel);
+            currentTravel: currentTravel, saveState: const SaveState.saved()));
+        currentTravelRepository.updateCurrentTravel(currentTravel);
       }).catchError((err) {
         emit((state as _Ready)
             .copyWith(saveState: SaveState.failed(message: err.toString())));
@@ -126,11 +125,9 @@ class CurrentTravelBloc extends Bloc<CurrentTravelEvent, CurrentTravelState> {
       await travelsRepository
           .completeCurrentTravel(travel: updatedTravel)
           .then((value) {
-        CurrentTravel updatedCurrentTravel =
-            currentTravel.copyWith(travel: updatedTravel);
+        currentTravel = currentTravel.copyWith(travel: updatedTravel);
         emit((state as _Ready).copyWith(
-            currentTravel: updatedCurrentTravel,
-            saveState: const SaveState.saved()));
+            currentTravel: currentTravel, saveState: const SaveState.saved()));
         currentTravelRepository.removeCurrentTravel();
       }).catchError((err) {
         emit((state as _Ready)
