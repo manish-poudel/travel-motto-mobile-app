@@ -29,6 +29,7 @@ class TravellerProfile with _$TravellerProfile {
       required String rank,
       required String gender,
       String? currentTravelId,
+      int? points,
       String? photoUrl}) = _TravellerProfile;
 
   factory TravellerProfile.fromJson(Map<String, Object?> json) =>

@@ -35,6 +35,8 @@ mixin _$TravelGame {
   String get author => throw _privateConstructorUsedError;
   String get lockedNotes => throw _privateConstructorUsedError;
   String get organiserId => throw _privateConstructorUsedError;
+  int get points => throw _privateConstructorUsedError;
+  int? get totalPlayers => throw _privateConstructorUsedError;
   String? get photoOwner => throw _privateConstructorUsedError;
   String? get photoSource => throw _privateConstructorUsedError;
   String? get passCode => throw _privateConstructorUsedError;
@@ -68,6 +70,8 @@ abstract class $TravelGameCopyWith<$Res> {
       String author,
       String lockedNotes,
       String organiserId,
+      int points,
+      int? totalPlayers,
       String? photoOwner,
       String? photoSource,
       String? passCode,
@@ -102,6 +106,8 @@ class _$TravelGameCopyWithImpl<$Res, $Val extends TravelGame>
     Object? author = null,
     Object? lockedNotes = null,
     Object? organiserId = null,
+    Object? points = null,
+    Object? totalPlayers = freezed,
     Object? photoOwner = freezed,
     Object? photoSource = freezed,
     Object? passCode = freezed,
@@ -165,6 +171,14 @@ class _$TravelGameCopyWithImpl<$Res, $Val extends TravelGame>
           ? _value.organiserId
           : organiserId // ignore: cast_nullable_to_non_nullable
               as String,
+      points: null == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPlayers: freezed == totalPlayers
+          ? _value.totalPlayers
+          : totalPlayers // ignore: cast_nullable_to_non_nullable
+              as int?,
       photoOwner: freezed == photoOwner
           ? _value.photoOwner
           : photoOwner // ignore: cast_nullable_to_non_nullable
@@ -212,6 +226,8 @@ abstract class _$$TravelGameImplCopyWith<$Res>
       String author,
       String lockedNotes,
       String organiserId,
+      int points,
+      int? totalPlayers,
       String? photoOwner,
       String? photoSource,
       String? passCode,
@@ -244,6 +260,8 @@ class __$$TravelGameImplCopyWithImpl<$Res>
     Object? author = null,
     Object? lockedNotes = null,
     Object? organiserId = null,
+    Object? points = null,
+    Object? totalPlayers = freezed,
     Object? photoOwner = freezed,
     Object? photoSource = freezed,
     Object? passCode = freezed,
@@ -307,6 +325,14 @@ class __$$TravelGameImplCopyWithImpl<$Res>
           ? _value.organiserId
           : organiserId // ignore: cast_nullable_to_non_nullable
               as String,
+      points: null == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPlayers: freezed == totalPlayers
+          ? _value.totalPlayers
+          : totalPlayers // ignore: cast_nullable_to_non_nullable
+              as int?,
       photoOwner: freezed == photoOwner
           ? _value.photoOwner
           : photoOwner // ignore: cast_nullable_to_non_nullable
@@ -349,6 +375,8 @@ class _$TravelGameImpl implements _TravelGame {
       required this.author,
       required this.lockedNotes,
       required this.organiserId,
+      required this.points,
+      this.totalPlayers,
       this.photoOwner,
       this.photoSource,
       this.passCode,
@@ -395,6 +423,10 @@ class _$TravelGameImpl implements _TravelGame {
   @override
   final String organiserId;
   @override
+  final int points;
+  @override
+  final int? totalPlayers;
+  @override
   final String? photoOwner;
   @override
   final String? photoSource;
@@ -407,7 +439,7 @@ class _$TravelGameImpl implements _TravelGame {
 
   @override
   String toString() {
-    return 'TravelGame(id: $id, gameTypeId: $gameTypeId, location: $location, question: $question, answer: $answer, notes: $notes, createdAt: $createdAt, photoUrl: $photoUrl, allowRadius: $allowRadius, fullAddress: $fullAddress, isOwner: $isOwner, author: $author, lockedNotes: $lockedNotes, organiserId: $organiserId, photoOwner: $photoOwner, photoSource: $photoSource, passCode: $passCode, passCodeHint: $passCodeHint, photoOwnerLink: $photoOwnerLink)';
+    return 'TravelGame(id: $id, gameTypeId: $gameTypeId, location: $location, question: $question, answer: $answer, notes: $notes, createdAt: $createdAt, photoUrl: $photoUrl, allowRadius: $allowRadius, fullAddress: $fullAddress, isOwner: $isOwner, author: $author, lockedNotes: $lockedNotes, organiserId: $organiserId, points: $points, totalPlayers: $totalPlayers, photoOwner: $photoOwner, photoSource: $photoSource, passCode: $passCode, passCodeHint: $passCodeHint, photoOwnerLink: $photoOwnerLink)';
   }
 
   @override
@@ -437,6 +469,9 @@ class _$TravelGameImpl implements _TravelGame {
                 other.lockedNotes == lockedNotes) &&
             (identical(other.organiserId, organiserId) ||
                 other.organiserId == organiserId) &&
+            (identical(other.points, points) || other.points == points) &&
+            (identical(other.totalPlayers, totalPlayers) ||
+                other.totalPlayers == totalPlayers) &&
             (identical(other.photoOwner, photoOwner) ||
                 other.photoOwner == photoOwner) &&
             (identical(other.photoSource, photoSource) ||
@@ -467,6 +502,8 @@ class _$TravelGameImpl implements _TravelGame {
         author,
         lockedNotes,
         organiserId,
+        points,
+        totalPlayers,
         photoOwner,
         photoSource,
         passCode,
@@ -504,6 +541,8 @@ abstract class _TravelGame implements TravelGame {
       required final String author,
       required final String lockedNotes,
       required final String organiserId,
+      required final int points,
+      final int? totalPlayers,
       final String? photoOwner,
       final String? photoSource,
       final String? passCode,
@@ -542,6 +581,10 @@ abstract class _TravelGame implements TravelGame {
   String get lockedNotes;
   @override
   String get organiserId;
+  @override
+  int get points;
+  @override
+  int? get totalPlayers;
   @override
   String? get photoOwner;
   @override

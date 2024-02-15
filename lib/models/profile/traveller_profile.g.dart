@@ -34,6 +34,7 @@ _$TravellerProfileImpl _$$TravellerProfileImplFromJson(
       rank: json['rank'] as String,
       gender: json['gender'] as String,
       currentTravelId: json['currentTravelId'] as String?,
+      points: json['points'] as int?,
       photoUrl: json['photoUrl'] as String?,
     );
 
@@ -48,5 +49,6 @@ Map<String, dynamic> _$$TravellerProfileImplToJson(
       'rank': instance.rank,
       'gender': instance.gender,
       'currentTravelId': instance.currentTravelId,
+      'points': instance.points,
       'photoUrl': instance.photoUrl,
     };

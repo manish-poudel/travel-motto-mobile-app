@@ -237,6 +237,8 @@ final GoRouter routes = GoRouter(
 
           return BlocProvider(
               create: (_) => PlayTravelGameBloc(
+                  travelGamesRepository:
+                      context.read<RepositoryContainer>().travelGamesRepository,
                   locationRepository:
                       context.read<RepositoryContainer>().locationRepository,
                   travelGame: travelGame),

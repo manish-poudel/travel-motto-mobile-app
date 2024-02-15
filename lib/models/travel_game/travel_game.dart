@@ -22,6 +22,8 @@ class TravelGame with _$TravelGame {
       required String author,
       required String lockedNotes,
       required String organiserId,
+      required int points,
+      int? totalPlayers,
       String? photoOwner,
       String? photoSource,
       String? passCode,

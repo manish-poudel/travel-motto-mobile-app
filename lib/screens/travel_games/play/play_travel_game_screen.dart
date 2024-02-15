@@ -180,6 +180,11 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                                                         Navigator.of(context)
                                                             .pop();
                                                       });
+
+                                                  _bloc.add(
+                                                      const PlayTravelGameEvent
+                                                          .logPlay(
+                                                          correctAnswer: true));
                                                 } else {
                                                   showRoundedConfirmModalBottomSheet(
                                                       title: "Wrong answer",
@@ -191,6 +196,12 @@ class _PlayTravelGameScreenState extends State<PlayTravelGameScreen> {
                                                         Navigator.of(context)
                                                             .pop();
                                                       });
+
+                                                  _bloc.add(
+                                                      const PlayTravelGameEvent
+                                                          .logPlay(
+                                                          correctAnswer:
+                                                              false));
                                                 }
                                               }),
                                         ),

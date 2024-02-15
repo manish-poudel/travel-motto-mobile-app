@@ -204,6 +204,7 @@ mixin _$TravellerProfile {
   String get rank => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
   String? get currentTravelId => throw _privateConstructorUsedError;
+  int? get points => throw _privateConstructorUsedError;
   String? get photoUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -227,6 +228,7 @@ abstract class $TravellerProfileCopyWith<$Res> {
       String rank,
       String gender,
       String? currentTravelId,
+      int? points,
       String? photoUrl});
 
   $DocumentUploadUsageCopyWith<$Res> get documentUploadUsage;
@@ -253,6 +255,7 @@ class _$TravellerProfileCopyWithImpl<$Res, $Val extends TravellerProfile>
     Object? rank = null,
     Object? gender = null,
     Object? currentTravelId = freezed,
+    Object? points = freezed,
     Object? photoUrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -288,6 +291,10 @@ class _$TravellerProfileCopyWithImpl<$Res, $Val extends TravellerProfile>
           ? _value.currentTravelId
           : currentTravelId // ignore: cast_nullable_to_non_nullable
               as String?,
+      points: freezed == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int?,
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -322,6 +329,7 @@ abstract class _$$TravellerProfileImplCopyWith<$Res>
       String rank,
       String gender,
       String? currentTravelId,
+      int? points,
       String? photoUrl});
 
   @override
@@ -347,6 +355,7 @@ class __$$TravellerProfileImplCopyWithImpl<$Res>
     Object? rank = null,
     Object? gender = null,
     Object? currentTravelId = freezed,
+    Object? points = freezed,
     Object? photoUrl = freezed,
   }) {
     return _then(_$TravellerProfileImpl(
@@ -382,6 +391,10 @@ class __$$TravellerProfileImplCopyWithImpl<$Res>
           ? _value.currentTravelId
           : currentTravelId // ignore: cast_nullable_to_non_nullable
               as String?,
+      points: freezed == points
+          ? _value.points
+          : points // ignore: cast_nullable_to_non_nullable
+              as int?,
       photoUrl: freezed == photoUrl
           ? _value.photoUrl
           : photoUrl // ignore: cast_nullable_to_non_nullable
@@ -402,6 +415,7 @@ class _$TravellerProfileImpl implements _TravellerProfile {
       required this.rank,
       required this.gender,
       this.currentTravelId,
+      this.points,
       this.photoUrl});
 
   factory _$TravellerProfileImpl.fromJson(Map<String, dynamic> json) =>
@@ -425,11 +439,13 @@ class _$TravellerProfileImpl implements _TravellerProfile {
   @override
   final String? currentTravelId;
   @override
+  final int? points;
+  @override
   final String? photoUrl;
 
   @override
   String toString() {
-    return 'TravellerProfile(id: $id, firstName: $firstName, lastName: $lastName, dob: $dob, documentUploadUsage: $documentUploadUsage, rank: $rank, gender: $gender, currentTravelId: $currentTravelId, photoUrl: $photoUrl)';
+    return 'TravellerProfile(id: $id, firstName: $firstName, lastName: $lastName, dob: $dob, documentUploadUsage: $documentUploadUsage, rank: $rank, gender: $gender, currentTravelId: $currentTravelId, points: $points, photoUrl: $photoUrl)';
   }
 
   @override
@@ -449,6 +465,7 @@ class _$TravellerProfileImpl implements _TravellerProfile {
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.currentTravelId, currentTravelId) ||
                 other.currentTravelId == currentTravelId) &&
+            (identical(other.points, points) || other.points == points) &&
             (identical(other.photoUrl, photoUrl) ||
                 other.photoUrl == photoUrl));
   }
@@ -456,7 +473,7 @@ class _$TravellerProfileImpl implements _TravellerProfile {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, firstName, lastName, dob,
-      documentUploadUsage, rank, gender, currentTravelId, photoUrl);
+      documentUploadUsage, rank, gender, currentTravelId, points, photoUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -483,6 +500,7 @@ abstract class _TravellerProfile implements TravellerProfile {
       required final String rank,
       required final String gender,
       final String? currentTravelId,
+      final int? points,
       final String? photoUrl}) = _$TravellerProfileImpl;
 
   factory _TravellerProfile.fromJson(Map<String, dynamic> json) =
@@ -505,6 +523,8 @@ abstract class _TravellerProfile implements TravellerProfile {
   String get gender;
   @override
   String? get currentTravelId;
+  @override
+  int? get points;
   @override
   String? get photoUrl;
   @override

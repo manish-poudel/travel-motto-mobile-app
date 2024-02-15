@@ -32,7 +32,7 @@ class TravelGamesListItem extends StatelessWidget {
                                 BlendMode.dstATop),
                             child: Image.network(
                               travelGame.photoUrl!,
-                              fit: BoxFit.fitWidth,
+                              fit: BoxFit.fill,
                               height: 240,
                               width: double.infinity,
                             ),

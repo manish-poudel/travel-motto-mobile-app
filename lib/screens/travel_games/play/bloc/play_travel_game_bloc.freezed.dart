@@ -19,32 +19,38 @@ mixin _$PlayTravelGameEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool correctAnswer) logPlay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(bool correctAnswer)? logPlay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool correctAnswer)? logPlay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_LogPlay value) logPlay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_LogPlay value)? logPlay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_LogPlay value)? logPlay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool correctAnswer) logPlay,
   }) {
     return started();
   }
@@ -115,6 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(bool correctAnswer)? logPlay,
   }) {
     return started?.call();
   }
@@ -123,6 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool correctAnswer)? logPlay,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -135,6 +144,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_LogPlay value) logPlay,
   }) {
     return started(this);
   }
@@ -143,6 +153,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_LogPlay value)? logPlay,
   }) {
     return started?.call(this);
   }
@@ -151,6 +162,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_LogPlay value)? logPlay,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -162,6 +174,140 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements PlayTravelGameEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$LogPlayImplCopyWith<$Res> {
+  factory _$$LogPlayImplCopyWith(
+          _$LogPlayImpl value, $Res Function(_$LogPlayImpl) then) =
+      __$$LogPlayImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool correctAnswer});
+}
+
+/// @nodoc
+class __$$LogPlayImplCopyWithImpl<$Res>
+    extends _$PlayTravelGameEventCopyWithImpl<$Res, _$LogPlayImpl>
+    implements _$$LogPlayImplCopyWith<$Res> {
+  __$$LogPlayImplCopyWithImpl(
+      _$LogPlayImpl _value, $Res Function(_$LogPlayImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? correctAnswer = null,
+  }) {
+    return _then(_$LogPlayImpl(
+      correctAnswer: null == correctAnswer
+          ? _value.correctAnswer
+          : correctAnswer // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LogPlayImpl implements _LogPlay {
+  const _$LogPlayImpl({required this.correctAnswer});
+
+  @override
+  final bool correctAnswer;
+
+  @override
+  String toString() {
+    return 'PlayTravelGameEvent.logPlay(correctAnswer: $correctAnswer)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LogPlayImpl &&
+            (identical(other.correctAnswer, correctAnswer) ||
+                other.correctAnswer == correctAnswer));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, correctAnswer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LogPlayImplCopyWith<_$LogPlayImpl> get copyWith =>
+      __$$LogPlayImplCopyWithImpl<_$LogPlayImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool correctAnswer) logPlay,
+  }) {
+    return logPlay(correctAnswer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(bool correctAnswer)? logPlay,
+  }) {
+    return logPlay?.call(correctAnswer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool correctAnswer)? logPlay,
+    required TResult orElse(),
+  }) {
+    if (logPlay != null) {
+      return logPlay(correctAnswer);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_LogPlay value) logPlay,
+  }) {
+    return logPlay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_LogPlay value)? logPlay,
+  }) {
+    return logPlay?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_LogPlay value)? logPlay,
+    required TResult orElse(),
+  }) {
+    if (logPlay != null) {
+      return logPlay(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LogPlay implements PlayTravelGameEvent {
+  const factory _LogPlay({required final bool correctAnswer}) = _$LogPlayImpl;
+
+  bool get correctAnswer;
+  @JsonKey(ignore: true)
+  _$$LogPlayImplCopyWith<_$LogPlayImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

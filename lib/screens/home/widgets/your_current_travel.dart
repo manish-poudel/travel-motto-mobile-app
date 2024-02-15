@@ -43,7 +43,7 @@ class _YourCurrentTravelState extends State<YourCurrentTravel> {
                           child: Image.asset(
                             'assets/images/travel_placeholder.jpg',
                             height: 300,
-                            fit: BoxFit.fitWidth,
+                            fit: BoxFit.fill,
                           ),
                         ),
                         Padding(

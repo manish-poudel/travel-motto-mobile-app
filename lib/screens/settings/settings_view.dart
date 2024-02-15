@@ -114,6 +114,8 @@ class _SettingsViewState extends State<SettingsView> {
                                                       rank: snapshot.data!.rank,
                                                       photoUrl: snapshot
                                                           .data!.photoUrl,
+                                                      points:
+                                                          snapshot.data!.points,
                                                       onEditProfilePressed: () {
                                                         _openEditProfileBottomSheet();
                                                       },
@@ -147,19 +149,6 @@ class _SettingsViewState extends State<SettingsView> {
                                                   const VisualDensity(
                                                       horizontal: 0,
                                                       vertical: -4)),
-
-                                          SettingsListItem(
-                                              onTap: () {
-                                                showSnackBar(context,
-                                                    "Soon, you will be able to organize your travel documents.");
-                                              },
-                                              title: "Documents",
-                                              badgeText: "Launching soon",
-                                              badgeColor: Colors.green.shade100,
-                                              visualDensity:
-                                                  const VisualDensity(
-                                                      horizontal: 0,
-                                                      vertical: 0)),
 
                                           const Padding(
                                             padding: EdgeInsets.only(
