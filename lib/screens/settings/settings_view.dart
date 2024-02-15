@@ -13,7 +13,6 @@ import 'package:travel_motto/screens/settings/widgets/settings_profile_card.dart
 import 'package:travel_motto/theme/theme.dart';
 import 'package:travel_motto/utils/launcher_utils.dart';
 import 'package:travel_motto/widgets/rounded_modal_bottom_sheet.dart';
-import 'package:travel_motto/widgets/snackbar.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
