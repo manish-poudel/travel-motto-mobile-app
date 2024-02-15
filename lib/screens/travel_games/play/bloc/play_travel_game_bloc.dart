@@ -70,7 +70,6 @@ class PlayTravelGameBloc
         debugPrint("logging player...");
         await travelGamesRepository
             .setTravelGamePlayer(
-                gamePlayPoints: travelGame.points,
                 travelGame: travelGame,
                 travelGamePlayer: TravelGamePlayer(
                     id: TravellerProfileRepository.profile.id,
