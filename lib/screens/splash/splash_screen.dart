@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: BlurBackground(
-            color: Colors.grey.shade700.withOpacity(0.4),
+            color: Colors.black.withOpacity(0.4),
             widget:
                 BlocConsumer<AuthBloc, AuthState>(builder: (context, state) {
               bool isLoadingProfile =

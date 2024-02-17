@@ -47,8 +47,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                     child: Container(
                       width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade700.withOpacity(0.4)),
+                      decoration:
+                          BoxDecoration(color: Colors.black.withOpacity(0.4)),
                     ))),
             BlocConsumer<SignupBloc, SignupState>(builder: (context, state) {
               bool signinup = state.whenOrNull(signingUp: () => true) ?? false;

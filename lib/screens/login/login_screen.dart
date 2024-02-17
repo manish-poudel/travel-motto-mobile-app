@@ -44,8 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                     child: Container(
                       width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade700.withOpacity(0.4)),
+                      decoration:
+                          BoxDecoration(color: Colors.black.withOpacity(0.4)),
                     ))),
             BlocConsumer<LoginBloc, LoginState>(builder: (context, state) {
               bool isLoggin = state.whenOrNull(logging: () => true) ?? false;
