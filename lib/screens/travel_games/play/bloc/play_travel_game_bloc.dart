@@ -36,7 +36,7 @@ class PlayTravelGameBloc
   _onEventStarted(Emitter<PlayTravelGameState> emit) async {
     try {
       TravelLocation? travelLocation =
-          await locationRepository.getCurrentLocation(refresh: true);
+          await locationRepository.getCurrentLocation(refresh: false);
       if (travelLocation == null) {
         return emit(const PlayTravelGameState.failed(
             message: "Something went wrong.Try again"));

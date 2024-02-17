@@ -207,7 +207,8 @@ final GoRouter routes = GoRouter(
                   travelGamesRepository:
                       context.read<RepositoryContainer>().travelGamesRepository,
                   travelGameType: state.extra as TravelGameType),
-              child: const TravelGamesScreen());
+              child: TravelGamesScreen(
+                  travelGameType: state.extra as TravelGameType));
         }),
     GoRoute(
         name: 'travel_game_organisers',
