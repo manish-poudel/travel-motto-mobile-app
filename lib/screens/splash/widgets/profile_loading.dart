@@ -16,9 +16,7 @@ class ProfileLoading extends StatelessWidget {
             const Text(
               "TravelMotto",
               style: TextStyle(
-                  fontFamily: 'Pacifico',
-                  fontSize: 42,
-                  color: Color(0xffffefcd)),
+                  fontFamily: 'Pacifico', fontSize: 42, color: Colors.white),
             ),
             Visibility(
               visible: showText,
