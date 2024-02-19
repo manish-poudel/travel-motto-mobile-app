@@ -54,7 +54,7 @@ class NoteNavigator extends StatelessWidget {
                       Expanded(
                         child: Center(
                           child: Text(
-                            "Scan notes left by travelers",
+                            "Scan note left by travelers",
                             textAlign: TextAlign.start,
                             style: TextStyle(
                                 color: Theme.of(context)

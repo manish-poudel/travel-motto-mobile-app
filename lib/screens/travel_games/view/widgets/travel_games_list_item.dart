@@ -24,7 +24,7 @@ class TravelGamesListItem extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Container(
-                        color: Colors.grey[100],
+                        color: Colors.grey[600],
                         child: ColorFiltered(
                           colorFilter: ColorFilter.mode(
                               Colors.black.withOpacity(
@@ -129,12 +129,12 @@ class TravelGamesListItem extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.lock,
-                              color: Colors.red,
+                              color: Colors.white,
                             ),
                             Text(
                               "Requires passcode",
                               style: TextStyle(
-                                  color: Colors.red,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold),
                             )
                           ],
