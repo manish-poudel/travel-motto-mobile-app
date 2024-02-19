@@ -873,7 +873,9 @@ mixin _$HomeScreenState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() locationDisabled,
-    required TResult Function(LocationState locationState) ready,
+    required TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)
+        ready,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -881,7 +883,9 @@ mixin _$HomeScreenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? locationDisabled,
-    TResult? Function(LocationState locationState)? ready,
+    TResult? Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -889,7 +893,9 @@ mixin _$HomeScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? locationDisabled,
-    TResult Function(LocationState locationState)? ready,
+    TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -979,7 +985,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() locationDisabled,
-    required TResult Function(LocationState locationState) ready,
+    required TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)
+        ready,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -990,7 +998,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? locationDisabled,
-    TResult? Function(LocationState locationState)? ready,
+    TResult? Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -1001,7 +1011,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? locationDisabled,
-    TResult Function(LocationState locationState)? ready,
+    TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1093,7 +1105,9 @@ class _$LocationDisabledImpl implements _LocationDisabled {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() locationDisabled,
-    required TResult Function(LocationState locationState) ready,
+    required TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)
+        ready,
     required TResult Function(String message) error,
   }) {
     return locationDisabled();
@@ -1104,7 +1118,9 @@ class _$LocationDisabledImpl implements _LocationDisabled {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? locationDisabled,
-    TResult? Function(LocationState locationState)? ready,
+    TResult? Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult? Function(String message)? error,
   }) {
     return locationDisabled?.call();
@@ -1115,7 +1131,9 @@ class _$LocationDisabledImpl implements _LocationDisabled {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? locationDisabled,
-    TResult Function(LocationState locationState)? ready,
+    TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1173,7 +1191,7 @@ abstract class _$$ReadyImplCopyWith<$Res> {
           _$ReadyImpl value, $Res Function(_$ReadyImpl) then) =
       __$$ReadyImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LocationState locationState});
+  $Res call({List<TravelGameType> travelGameType, LocationState locationState});
 
   $LocationStateCopyWith<$Res> get locationState;
 }
@@ -1189,9 +1207,14 @@ class __$$ReadyImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? travelGameType = null,
     Object? locationState = null,
   }) {
     return _then(_$ReadyImpl(
+      travelGameType: null == travelGameType
+          ? _value._travelGameType
+          : travelGameType // ignore: cast_nullable_to_non_nullable
+              as List<TravelGameType>,
       locationState: null == locationState
           ? _value.locationState
           : locationState // ignore: cast_nullable_to_non_nullable
@@ -1211,7 +1234,19 @@ class __$$ReadyImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ReadyImpl implements _Ready {
-  const _$ReadyImpl({this.locationState = const LocationState.idle()});
+  const _$ReadyImpl(
+      {final List<TravelGameType> travelGameType = const [],
+      this.locationState = const LocationState.idle()})
+      : _travelGameType = travelGameType;
+
+  final List<TravelGameType> _travelGameType;
+  @override
+  @JsonKey()
+  List<TravelGameType> get travelGameType {
+    if (_travelGameType is EqualUnmodifiableListView) return _travelGameType;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_travelGameType);
+  }
 
   @override
   @JsonKey()
@@ -1219,7 +1254,7 @@ class _$ReadyImpl implements _Ready {
 
   @override
   String toString() {
-    return 'HomeScreenState.ready(locationState: $locationState)';
+    return 'HomeScreenState.ready(travelGameType: $travelGameType, locationState: $locationState)';
   }
 
   @override
@@ -1227,12 +1262,15 @@ class _$ReadyImpl implements _Ready {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReadyImpl &&
+            const DeepCollectionEquality()
+                .equals(other._travelGameType, _travelGameType) &&
             (identical(other.locationState, locationState) ||
                 other.locationState == locationState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, locationState);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_travelGameType), locationState);
 
   @JsonKey(ignore: true)
   @override
@@ -1245,10 +1283,12 @@ class _$ReadyImpl implements _Ready {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() locationDisabled,
-    required TResult Function(LocationState locationState) ready,
+    required TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)
+        ready,
     required TResult Function(String message) error,
   }) {
-    return ready(locationState);
+    return ready(travelGameType, locationState);
   }
 
   @override
@@ -1256,10 +1296,12 @@ class _$ReadyImpl implements _Ready {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? locationDisabled,
-    TResult? Function(LocationState locationState)? ready,
+    TResult? Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult? Function(String message)? error,
   }) {
-    return ready?.call(locationState);
+    return ready?.call(travelGameType, locationState);
   }
 
   @override
@@ -1267,12 +1309,14 @@ class _$ReadyImpl implements _Ready {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? locationDisabled,
-    TResult Function(LocationState locationState)? ready,
+    TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (ready != null) {
-      return ready(locationState);
+      return ready(travelGameType, locationState);
     }
     return orElse();
   }
@@ -1316,8 +1360,11 @@ class _$ReadyImpl implements _Ready {
 }
 
 abstract class _Ready implements HomeScreenState {
-  const factory _Ready({final LocationState locationState}) = _$ReadyImpl;
+  const factory _Ready(
+      {final List<TravelGameType> travelGameType,
+      final LocationState locationState}) = _$ReadyImpl;
 
+  List<TravelGameType> get travelGameType;
   LocationState get locationState;
   @JsonKey(ignore: true)
   _$$ReadyImplCopyWith<_$ReadyImpl> get copyWith =>
@@ -1390,7 +1437,9 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() locationDisabled,
-    required TResult Function(LocationState locationState) ready,
+    required TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)
+        ready,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1401,7 +1450,9 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? locationDisabled,
-    TResult? Function(LocationState locationState)? ready,
+    TResult? Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1412,7 +1463,9 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? locationDisabled,
-    TResult Function(LocationState locationState)? ready,
+    TResult Function(
+            List<TravelGameType> travelGameType, LocationState locationState)?
+        ready,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

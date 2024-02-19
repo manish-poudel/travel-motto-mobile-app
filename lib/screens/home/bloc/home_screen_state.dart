@@ -14,6 +14,7 @@ class HomeScreenState with _$HomeScreenState {
   const factory HomeScreenState.initial() = _Initial;
   const factory HomeScreenState.locationDisabled() = _LocationDisabled;
   const factory HomeScreenState.ready({
+    @Default([]) List<TravelGameType> travelGameType,
     @Default(LocationState.idle()) LocationState locationState,
   }) = _Ready;
   const factory HomeScreenState.error({required String message}) = _Error;

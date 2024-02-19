@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:go_router/go_router.dart';
 import 'package:travel_motto/models/current_travel_stream_data/current_travel_stream_data.dart';
 import 'package:travel_motto/repositories/current_travel_repository.dart';
 import 'package:travel_motto/repositories/traveller_profile_repository.dart';
 import 'package:travel_motto/screens/home/bloc/home_screen_bloc.dart';
 import 'package:travel_motto/screens/home/widgets/app_bar.dart';
+import 'package:travel_motto/screens/home/widgets/note_navigator.dart';
 import 'package:travel_motto/screens/home/widgets/search_place.dart';
+import 'package:travel_motto/screens/home/widgets/travel_game_navigator.dart';
 import 'package:travel_motto/screens/home/widgets/your_current_travel.dart';
 import 'package:travel_motto/screens/home/widgets/your_location.dart';
-import 'package:travel_motto/screens/scan_notes/models/enums.dart';
 
 import 'package:travel_motto/theme/theme.dart';
 import 'package:travel_motto/widgets/snackbar.dart';
@@ -54,7 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     }))),
         body: BlocConsumer<HomeScreenBloc, HomeScreenState>(
           builder: (BuildContext context, HomeScreenState state) {
-            return state.whenOrNull(ready: (locationState) {
+            return state.whenOrNull(
+                    ready: (featuredTravelGameType, locationState) {
                   return Container(
                     color: Colors.white,
                     child: Column(
@@ -108,140 +109,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ],
                                       ));
                                 }),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                    width: double.infinity,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 36, right: 36),
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 32.0),
-                                        child: TextButton(
-                                            style: ButtonStyle(
-                                                elevation: MaterialStateProperty.all(
-                                                    18),
-                                                backgroundColor:
-                                                    MaterialStateProperty.all(
-                                                        Theme.of(context)
-                                                            .primaryColor
-                                                            .withOpacity(1)),
-                                                shape: MaterialStateProperty.all<
-                                                        RoundedRectangleBorder>(
-                                                    RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                18.0),
-                                                        side: BorderSide(color: Theme.of(context).primaryColor.withOpacity(1))))),
-                                            onPressed: () {
-                                              context.push('/add_note');
-                                            },
-                                            child: const Text(
-                                              "Leave note at your location",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            )),
-                                      ),
-                                    )),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 0.0,
-                                        left: 36,
-                                        right: 36,
-                                        bottom: 16.0),
-                                    child: TextButton(
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.white),
-                                            shape: MaterialStateProperty.all<
-                                                    RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            18.0),
-                                                    side: BorderSide(
-                                                        color: Theme.of(context)
-                                                            .primaryColor
-                                                            .withOpacity(1))))),
-                                        onPressed: () {
-                                          context.push('/scan_note',
-                                              extra:
-                                                  ScanLocationNotesType.public);
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const Icon(Icons.search),
-                                            Text(
-                                              "Scan notes",
-                                              style: TextStyle(
-                                                  color: Theme.of(context)
-                                                      .primaryColor
-                                                      .withOpacity(1)),
-                                            ),
-                                          ],
-                                        )),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: double.infinity,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 16.0,
-                                    left: 36,
-                                    right: 36,
-                                    bottom: 32.0),
-                                child: TextButton(
-                                    style: ButtonStyle(
-                                        elevation:
-                                            MaterialStateProperty.all(18),
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                                Colors.white),
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(18.0),
-                                                side: const BorderSide(
-                                                    color: Colors.white)))),
-                                    onPressed: () {
-                                      context.push('/travel_game_organisers');
-                                    },
-                                    child: const Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(right: 8.0),
-                                          child: Icon(
-                                            Icons.games,
-                                            color: Colors.green,
-                                          ),
-                                        ),
-                                        Text(
-                                          "Play travel games",
-                                          style: TextStyle(color: Colors.green),
-                                        ),
-                                      ],
-                                    )),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 16.0, right: 16.0, top: 38.0),
+                              child: TravelGameNavigator(
+                                featuredTravelGameType: featuredTravelGameType,
                               ),
                             ),
+                            locationState.whenOrNull(fetched: (travelLocation) {
+                                  return NoteNavigator(
+                                    fullAddress:
+                                        travelLocation.getReadableLocation(),
+                                  );
+                                }) ??
+                                const NoteNavigator()
                           ],
                         ))),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: YourLocation(locationState: locationState),
-                        ),
                       ],
                     ),
                   );
@@ -254,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
             state.whenOrNull(error: (message) {
               //todo(mp-truenary): get error message
               showSnackBar(context, message);
-            }, ready: (locationState) {
+            }, ready: (_, locationState) {
               locationState.whenOrNull(idle: () async {
                 LocationPermission permission;
                 if (!await Geolocator.isLocationServiceEnabled()) {

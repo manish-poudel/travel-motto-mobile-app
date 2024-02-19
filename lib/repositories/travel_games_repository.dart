@@ -34,6 +34,18 @@ class TravelGamesRepository {
         .get();
   }
 
+  Future<QuerySnapshot<TravelGameType>> getFeaturedTravelGameTypes() {
+    final gamesReference = FirebaseFirestore.instance
+        .collection("featured_travel_game_types")
+        .withConverter<TravelGameType>(
+          fromFirestore: (snapshots, _) =>
+              TravelGameType.fromJson(snapshots.data()!),
+          toFirestore: (travelGameType, _) => travelGameType.toJson(),
+        );
+
+    return gamesReference.get();
+  }
+
   Future<QuerySnapshot<TravelGameOrganiser>> getTravelGameOrganisers() {
     return travelGameOrganiserReference.get();
   }

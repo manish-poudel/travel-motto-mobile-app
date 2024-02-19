@@ -84,11 +84,11 @@ class TravelGamesListItem extends StatelessWidget {
                               onPressed: onPressed,
                               icon: const Icon(
                                 Icons.play_arrow,
-                                color: Colors.black,
+                                color: Colors.white,
                               ),
                               label: const Text(
                                 "Play",
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(color: Colors.white),
                               )),
                         ),
                       ],

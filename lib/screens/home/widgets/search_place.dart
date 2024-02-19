@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:travel_motto/repositories/traveller_profile_repository.dart';
+import 'package:travel_motto/widgets/tm_primary_button.dart';
 
 class SearchPlace extends StatelessWidget {
   SearchPlace({super.key});
@@ -47,7 +48,7 @@ class SearchPlace extends StatelessWidget {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(top: 16.0, left: 21, right: 21),
+        padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
         child: TextField(
           controller: searchController,
           style: const TextStyle(fontSize: 14),
@@ -56,12 +57,12 @@ class SearchPlace extends StatelessWidget {
             contentPadding: const EdgeInsets.all(8.0),
             border: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.withOpacity(0.6)),
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(0.0),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide:
                   BorderSide(color: Theme.of(context).primaryColor, width: 2),
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.circular(0.0),
             ),
             filled: true,
             hintStyle: TextStyle(
@@ -74,28 +75,48 @@ class SearchPlace extends StatelessWidget {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(top: 0.0),
-        child: TextButton(
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.transparent),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0.0),
-                        side: const BorderSide(color: Colors.transparent)))),
-            onPressed: () {
-              if (searchController.text.isNotEmpty) {
-                context.push('/search_place',
-                    extra: searchController.text.trim());
-              }
-            },
-            child: Text(
-              "Search",
-              style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
-            )),
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+        child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: TMPrimaryButton(
+                text: "Search",
+                backgroundColor: Theme.of(context).primaryColor,
+                borderColor: Theme.of(context).primaryColor,
+                borderWidth: 2,
+                onPressed: () {
+                  if (searchController.text.isNotEmpty) {
+                    context.push('/search_place',
+                        extra: searchController.text.trim());
+                  }
+                })),
       )
+      // Align(
+      //   alignment: Alignment.topRight,
+      //   child: Padding(
+      //     padding: const EdgeInsets.only(top: 0.0),
+      //     child: TextButton(
+      //         style: ButtonStyle(
+      //             backgroundColor:
+      //                 MaterialStateProperty.all(Colors.transparent),
+      //             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      //                 RoundedRectangleBorder(
+      //                     borderRadius: BorderRadius.circular(0.0),
+      //                     side: const BorderSide(color: Colors.transparent)))),
+      //         onPressed: () {
+      //           if (searchController.text.isNotEmpty) {
+      //             context.push('/search_place',
+      //                 extra: searchController.text.trim());
+      //           }
+      //         },
+      //         child: Text(
+      //           "Search",
+      //           style: TextStyle(
+      //               color: Theme.of(context).primaryColor,
+      //               fontSize: 15,
+      //               fontWeight: FontWeight.bold),
+      //         )),
+      //   ),
+      // )
     ]);
   }
 }
