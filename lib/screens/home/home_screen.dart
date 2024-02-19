@@ -10,7 +10,6 @@ import 'package:travel_motto/screens/home/widgets/note_navigator.dart';
 import 'package:travel_motto/screens/home/widgets/search_place.dart';
 import 'package:travel_motto/screens/home/widgets/travel_game_navigator.dart';
 import 'package:travel_motto/screens/home/widgets/your_current_travel.dart';
-import 'package:travel_motto/screens/home/widgets/your_location.dart';
 
 import 'package:travel_motto/theme/theme.dart';
 import 'package:travel_motto/widgets/snackbar.dart';

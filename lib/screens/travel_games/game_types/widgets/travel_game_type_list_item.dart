@@ -45,12 +45,26 @@ class TravelGameTypeListItem extends StatelessWidget {
                 ]),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                travelGameType.name,
-                style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    travelGameType.name,
+                    style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  travelGameType.organiserName == null
+                      ? const SizedBox.shrink()
+                      : Text(
+                          "by ${travelGameType.organiserName!}",
+                          style: const TextStyle(
+                              fontSize: 10, color: Colors.white),
+                        ),
+                ],
               ),
             )),
       ),

@@ -16,6 +16,7 @@ _$TravelGameTypeImpl _$$TravelGameTypeImplFromJson(Map<String, dynamic> json) =>
           const TimestampConverter().fromJson(json['updatedAt'] as Timestamp),
       createdAt:
           const TimestampConverter().fromJson(json['createdAt'] as Timestamp),
+      organiserName: json['organiserName'] as String?,
     );
 
 Map<String, dynamic> _$$TravelGameTypeImplToJson(
@@ -27,4 +28,5 @@ Map<String, dynamic> _$$TravelGameTypeImplToJson(
       'organiserId': instance.organiserId,
       'updatedAt': const TimestampConverter().toJson(instance.updatedAt),
       'createdAt': const TimestampConverter().toJson(instance.createdAt),
+      'organiserName': instance.organiserName,
     };

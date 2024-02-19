@@ -28,6 +28,7 @@ mixin _$TravelGameType {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
+  String? get organiserName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +48,8 @@ abstract class $TravelGameTypeCopyWith<$Res> {
       String photoUrl,
       String organiserId,
       @TimestampConverter() DateTime updatedAt,
-      @TimestampConverter() DateTime createdAt});
+      @TimestampConverter() DateTime createdAt,
+      String? organiserName});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$TravelGameTypeCopyWithImpl<$Res, $Val extends TravelGameType>
     Object? organiserId = null,
     Object? updatedAt = null,
     Object? createdAt = null,
+    Object? organiserName = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -95,6 +98,10 @@ class _$TravelGameTypeCopyWithImpl<$Res, $Val extends TravelGameType>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      organiserName: freezed == organiserName
+          ? _value.organiserName
+          : organiserName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -113,7 +120,8 @@ abstract class _$$TravelGameTypeImplCopyWith<$Res>
       String photoUrl,
       String organiserId,
       @TimestampConverter() DateTime updatedAt,
-      @TimestampConverter() DateTime createdAt});
+      @TimestampConverter() DateTime createdAt,
+      String? organiserName});
 }
 
 /// @nodoc
@@ -133,6 +141,7 @@ class __$$TravelGameTypeImplCopyWithImpl<$Res>
     Object? organiserId = null,
     Object? updatedAt = null,
     Object? createdAt = null,
+    Object? organiserName = freezed,
   }) {
     return _then(_$TravelGameTypeImpl(
       id: null == id
@@ -159,6 +168,10 @@ class __$$TravelGameTypeImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      organiserName: freezed == organiserName
+          ? _value.organiserName
+          : organiserName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -172,7 +185,8 @@ class _$TravelGameTypeImpl implements _TravelGameType {
       required this.photoUrl,
       required this.organiserId,
       @TimestampConverter() required this.updatedAt,
-      @TimestampConverter() required this.createdAt});
+      @TimestampConverter() required this.createdAt,
+      this.organiserName});
 
   factory _$TravelGameTypeImpl.fromJson(Map<String, dynamic> json) =>
       _$$TravelGameTypeImplFromJson(json);
@@ -191,10 +205,12 @@ class _$TravelGameTypeImpl implements _TravelGameType {
   @override
   @TimestampConverter()
   final DateTime createdAt;
+  @override
+  final String? organiserName;
 
   @override
   String toString() {
-    return 'TravelGameType(id: $id, name: $name, photoUrl: $photoUrl, organiserId: $organiserId, updatedAt: $updatedAt, createdAt: $createdAt)';
+    return 'TravelGameType(id: $id, name: $name, photoUrl: $photoUrl, organiserId: $organiserId, updatedAt: $updatedAt, createdAt: $createdAt, organiserName: $organiserName)';
   }
 
   @override
@@ -211,13 +227,15 @@ class _$TravelGameTypeImpl implements _TravelGameType {
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            (identical(other.organiserName, organiserName) ||
+                other.organiserName == organiserName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, photoUrl, organiserId, updatedAt, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, name, photoUrl, organiserId,
+      updatedAt, createdAt, organiserName);
 
   @JsonKey(ignore: true)
   @override
@@ -236,13 +254,13 @@ class _$TravelGameTypeImpl implements _TravelGameType {
 
 abstract class _TravelGameType implements TravelGameType {
   factory _TravelGameType(
-          {required final String id,
-          required final String name,
-          required final String photoUrl,
-          required final String organiserId,
-          @TimestampConverter() required final DateTime updatedAt,
-          @TimestampConverter() required final DateTime createdAt}) =
-      _$TravelGameTypeImpl;
+      {required final String id,
+      required final String name,
+      required final String photoUrl,
+      required final String organiserId,
+      @TimestampConverter() required final DateTime updatedAt,
+      @TimestampConverter() required final DateTime createdAt,
+      final String? organiserName}) = _$TravelGameTypeImpl;
 
   factory _TravelGameType.fromJson(Map<String, dynamic> json) =
       _$TravelGameTypeImpl.fromJson;
@@ -261,6 +279,8 @@ abstract class _TravelGameType implements TravelGameType {
   @override
   @TimestampConverter()
   DateTime get createdAt;
+  @override
+  String? get organiserName;
   @override
   @JsonKey(ignore: true)
   _$$TravelGameTypeImplCopyWith<_$TravelGameTypeImpl> get copyWith =>
