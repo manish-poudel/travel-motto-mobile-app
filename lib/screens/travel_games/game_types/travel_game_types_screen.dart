@@ -80,6 +80,9 @@ class _TravelGameTypeScreenState extends State<TravelGameTypeScreen> {
                                                       travelGameTypes[index]);
                                             },
                                             child: TravelGameTypeListItem(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
                                                 travelGameType:
                                                     travelGameTypes[index]),
                                           ),

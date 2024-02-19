@@ -3,7 +3,13 @@ import 'package:travel_motto/models/travel_game_type/travel_game_type.dart';
 
 class TravelGameTypeListItem extends StatelessWidget {
   final TravelGameType travelGameType;
-  const TravelGameTypeListItem({super.key, required this.travelGameType});
+  final double width;
+  final double height;
+  const TravelGameTypeListItem(
+      {super.key,
+      required this.travelGameType,
+      this.height = 120,
+      required this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class TravelGameTypeListItem extends StatelessWidget {
               placeholderFit: BoxFit.scaleDown,
               image: travelGameType.photoUrl,
               height: 120,
-              width: MediaQuery.of(context).size.width,
+              width: width,
               fit: BoxFit.fitWidth,
             ),
           ),

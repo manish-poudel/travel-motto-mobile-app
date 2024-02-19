@@ -287,7 +287,7 @@ class _YourCurrentTravelState extends State<YourCurrentTravel> {
                       children: [
                         Text(
                           widget.currentTravel.travel.status == "not_started"
-                              ? "You are set to travel for"
+                              ? "You are set to travel to"
                               : "Currently traveling to",
                           //textAlign: TextAlign.center,
                           style: TextStyle(

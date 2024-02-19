@@ -115,6 +115,8 @@ final GoRouter routes = GoRouter(
         builder: (BuildContext context, GoRouterState state) {
           return BlocProvider(
               create: (_) => HomeScreenBloc(
+                  travelGamesRepository:
+                      context.read<RepositoryContainer>().travelGamesRepository,
                   travellerProfileRepository: context
                       .read<RepositoryContainer>()
                       .travellerProfileRepository,
