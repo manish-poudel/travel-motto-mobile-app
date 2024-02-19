@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_motto/models/travel_game_type/travel_game_type.dart';
 import 'package:travel_motto/screens/travel_games/game_types/widgets/travel_game_type_list_item.dart';
-import 'package:travel_motto/widgets/chip_button.dart';
 
 class TravelGameNavigator extends StatelessWidget {
   final List<TravelGameType> featuredTravelGameType;

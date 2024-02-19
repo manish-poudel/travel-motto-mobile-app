@@ -9,7 +9,7 @@ class NoteNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 36),
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 42),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -54,7 +54,7 @@ class NoteNavigator extends StatelessWidget {
                       Expanded(
                         child: Center(
                           child: Text(
-                            "Scan notes left by travelers",
+                            "Scan note left by travelers",
                             textAlign: TextAlign.start,
                             style: TextStyle(
                                 color: Theme.of(context)
@@ -93,7 +93,7 @@ class NoteNavigator extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Icon(
-                            Icons.note_add_rounded,
+                            Icons.note_alt,
                             color: Colors.white,
                           ),
                           Expanded(

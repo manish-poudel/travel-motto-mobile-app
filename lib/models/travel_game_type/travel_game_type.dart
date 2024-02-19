@@ -7,13 +7,15 @@ part 'travel_game_type.freezed.dart';
 
 @freezed
 class TravelGameType with _$TravelGameType {
-  factory TravelGameType(
-      {required String id,
-      required String name,
-      required String photoUrl,
-      required String organiserId,
-      @TimestampConverter() required DateTime updatedAt,
-      @TimestampConverter() required DateTime createdAt}) = _TravelGameType;
+  factory TravelGameType({
+    required String id,
+    required String name,
+    required String photoUrl,
+    required String organiserId,
+    @TimestampConverter() required DateTime updatedAt,
+    @TimestampConverter() required DateTime createdAt,
+    String? organiserName,
+  }) = _TravelGameType;
 
   factory TravelGameType.fromJson(Map<String, Object?> json) =>
       _$TravelGameTypeFromJson(json);
