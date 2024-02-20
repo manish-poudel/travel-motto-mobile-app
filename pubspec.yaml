@@ -95,8 +95,6 @@ flutter:
 
   assets:
     - assets/images/bouddha.jpg
-    - assets/images/woman.png
-    - assets/images/man.png
     - assets/images/location_search.gif
     - assets/images/loading.gif
     - assets/images/no_road.png
