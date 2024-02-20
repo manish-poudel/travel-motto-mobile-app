@@ -79,6 +79,14 @@ class CurrentTravelRepository {
     _currentTravelController.sink.add(currentTravelStreamData);
   }
 
+  updateTravel(Travel travel) {
+    currentTravelStreamData = CurrentTravelStreamData(
+        process: StreamProcess.done,
+        currentTravel:
+            currentTravelStreamData.currentTravel?.copyWith(travel: travel));
+    _currentTravelController.sink.add(currentTravelStreamData);
+  }
+
   addTravelPhoto() async {
     try {
       if (travelPhotos.pexelsPhotos.isEmpty) {

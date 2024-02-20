@@ -68,9 +68,9 @@ class SettingsProfileCard extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 8.0),
                       child: ChipText(
                         text: "${points ?? 0} points ",
-                        textColor: Colors.black54,
-                        backGroundColor: Colors.greenAccent,
-                        borderColor: Colors.greenAccent,
+                        textColor: Colors.white,
+                        backGroundColor: Colors.green,
+                        borderColor: Colors.green,
                       ),
                     )
                   ],
@@ -84,14 +84,16 @@ class SettingsProfileCard extends StatelessWidget {
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
                               side: BorderSide(
-                                  color:
-                                      const Color(0xffE09132).withOpacity(1)))),
+                                  color: Theme.of(context)
+                                      .primaryColor
+                                      .withOpacity(0.8)))),
                     ),
                     onPressed: onEditProfilePressed,
                     child: Text(
                       "Edit profile",
                       style: TextStyle(
-                          color: const Color(0xffE09132).withOpacity(1)),
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.8)),
                     ),
                   ),
                 )

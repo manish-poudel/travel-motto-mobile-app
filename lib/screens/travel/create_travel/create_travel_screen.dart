@@ -50,13 +50,17 @@ class _CreateTravelScreenState extends State<CreateTravelScreen> {
         data: AppTheme.getTheme(),
         child: BlocConsumer<CreateTravelBloc, CreateTravelState>(
             listener: (context, state) {
-          state.whenOrNull(ready: (_, __, ___, ____, _____, ______, _______,
-              ________, _________, __________, saveState) {
+          state.whenOrNull(ready: (isUpdating, _, __, ___, ____, _____, ______,
+              _______, ________, saveState) {
             saveState.whenOrNull(
                 failed: (message) => showSnackBar(context, message),
                 saved: () {
-                  while (GoRouter.of(context).canPop()) {
-                    GoRouter.of(context).pop();
+                  if (isUpdating) {
+                    Navigator.of(context).pop(true);
+                  } else {
+                    while (GoRouter.of(context).canPop()) {
+                      GoRouter.of(context).pop();
+                    }
                   }
                 });
           });
@@ -65,16 +69,15 @@ class _CreateTravelScreenState extends State<CreateTravelScreen> {
                 return const Scaffold(
                     body: Center(
                         child: SizedBox(child: CircularProgressIndicator())));
-              }, ready: (travelNameController,
+              }, ready: (isUpdating,
+                  travelNameController,
                   travellingToController,
                   destinationController,
                   latController,
                   lngController,
                   checkListControllers,
                   focusNodes,
-                  currentLocation,
                   travelDate,
-                  destination,
                   saveState) {
                 return Scaffold(
                     bottomNavigationBar: saveState.whenOrNull(

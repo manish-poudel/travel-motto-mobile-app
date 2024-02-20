@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:travel_motto/screens/travel/current_travel/bloc/current_travel_bloc.dart';
 import 'package:travel_motto/theme/theme.dart';
 import 'package:travel_motto/utils/datetime_utils.dart';
+import 'package:travel_motto/utils/location_utils.dart';
 import 'package:travel_motto/widgets/chip_button.dart';
 import 'package:travel_motto/widgets/rounded_modal_bottom_sheet.dart';
 import 'package:travel_motto/widgets/snackbar.dart';
@@ -51,6 +53,22 @@ class _CurrentTravelScreenState extends State<CurrentTravelScreen> {
                       onPressed: () => Navigator.of(context).pop()),
                   backgroundColor: Colors.white,
                   actions: [
+                    currentTravel.travel.status == "completed"
+                        ? const SizedBox.shrink()
+                        : IconButton(
+                            onPressed: () async {
+                              bool? updated = await context.push<bool>(
+                                  '/update_travel',
+                                  extra: currentTravel.travel);
+                              if (updated == true) {
+                                _bloc.add(const CurrentTravelEvent.refresh());
+                              }
+                            },
+                            icon: const Icon(
+                              Icons.edit,
+                              color: Colors.black54,
+                              size: 21,
+                            )),
                     deleteState.whenOrNull(deleting: () {
                           return const Padding(
                             padding: EdgeInsets.only(right: 16.0),
@@ -77,6 +95,7 @@ class _CurrentTravelScreenState extends State<CurrentTravelScreen> {
                             },
                             icon: const Icon(
                               Icons.delete,
+                              color: Colors.black54,
                               size: 21,
                             ))
                   ],
@@ -172,6 +191,40 @@ class _CurrentTravelScreenState extends State<CurrentTravelScreen> {
                             ),
                           ),
                         ),
+                        currentTravel.travel.totalTravelDistance() == null
+                            ? const SizedBox.shrink()
+                            : Padding(
+                                padding: EdgeInsets.only(top: 21.0, left: 16.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "Total travel distance",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                          color: Colors.black87),
+                                    ),
+                                    Card(
+                                      color: Colors.grey[50],
+                                      elevation: 0,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          LocationUtils.readableDistance(
+                                              currentTravel.travel
+                                                  .totalTravelDistance()!
+                                                  .toInt()),
+                                          style: const TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black54),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                         currentTravel.remainingTravelDistance == null
                             ? const SizedBox.shrink()
                             : const Padding(
@@ -195,7 +248,9 @@ class _CurrentTravelScreenState extends State<CurrentTravelScreen> {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      "${currentTravel.remainingTravelDistance!.round()}m",
+                                      LocationUtils.readableDistance(
+                                          currentTravel.remainingTravelDistance!
+                                              .round()),
                                       style: const TextStyle(
                                           fontSize: 12, color: Colors.black54),
                                     ),

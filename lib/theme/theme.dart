@@ -5,7 +5,7 @@ class AppTheme {
     return ThemeData(
       //scaffoldBackgroundColor: const Color(0xffFFF9f0), //jicama
       fontFamily: 'Poppins',
-
+      scaffoldBackgroundColor: Colors.white,
       primaryColor: const Color(0xffE09132),
 
       textSelectionTheme: const TextSelectionThemeData(

@@ -25,4 +25,11 @@ class LocationUtils {
     }
     return combinedAddress;
   }
+
+  static String readableDistance(int metre) {
+    if (metre < 1000) {
+      return "$metre m";
+    }
+    return "${metre ~/ 1000} km";
+  }
 }

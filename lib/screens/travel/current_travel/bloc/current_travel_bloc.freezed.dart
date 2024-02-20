@@ -24,6 +24,7 @@ mixin _$CurrentTravelEvent {
     required TResult Function() completeTravel,
     required TResult Function() syncTravel,
     required TResult Function(int index, bool checked) toggleCheckList,
+    required TResult Function() refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$CurrentTravelEvent {
     TResult? Function()? completeTravel,
     TResult? Function()? syncTravel,
     TResult? Function(int index, bool checked)? toggleCheckList,
+    TResult? Function()? refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$CurrentTravelEvent {
     TResult Function()? completeTravel,
     TResult Function()? syncTravel,
     TResult Function(int index, bool checked)? toggleCheckList,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$CurrentTravelEvent {
     required TResult Function(_CompleteTravel value) completeTravel,
     required TResult Function(_SyncTravel value) syncTravel,
     required TResult Function(_ToggleCheckList value) toggleCheckList,
+    required TResult Function(_Refresh value) refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$CurrentTravelEvent {
     TResult? Function(_CompleteTravel value)? completeTravel,
     TResult? Function(_SyncTravel value)? syncTravel,
     TResult? Function(_ToggleCheckList value)? toggleCheckList,
+    TResult? Function(_Refresh value)? refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$CurrentTravelEvent {
     TResult Function(_CompleteTravel value)? completeTravel,
     TResult Function(_SyncTravel value)? syncTravel,
     TResult Function(_ToggleCheckList value)? toggleCheckList,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +148,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() completeTravel,
     required TResult Function() syncTravel,
     required TResult Function(int index, bool checked) toggleCheckList,
+    required TResult Function() refresh,
   }) {
     return started();
   }
@@ -155,6 +162,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? completeTravel,
     TResult? Function()? syncTravel,
     TResult? Function(int index, bool checked)? toggleCheckList,
+    TResult? Function()? refresh,
   }) {
     return started?.call();
   }
@@ -168,6 +176,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? completeTravel,
     TResult Function()? syncTravel,
     TResult Function(int index, bool checked)? toggleCheckList,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -185,6 +194,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_CompleteTravel value) completeTravel,
     required TResult Function(_SyncTravel value) syncTravel,
     required TResult Function(_ToggleCheckList value) toggleCheckList,
+    required TResult Function(_Refresh value) refresh,
   }) {
     return started(this);
   }
@@ -198,6 +208,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_CompleteTravel value)? completeTravel,
     TResult? Function(_SyncTravel value)? syncTravel,
     TResult? Function(_ToggleCheckList value)? toggleCheckList,
+    TResult? Function(_Refresh value)? refresh,
   }) {
     return started?.call(this);
   }
@@ -211,6 +222,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_CompleteTravel value)? completeTravel,
     TResult Function(_SyncTravel value)? syncTravel,
     TResult Function(_ToggleCheckList value)? toggleCheckList,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -268,6 +280,7 @@ class _$DeleteImpl implements _Delete {
     required TResult Function() completeTravel,
     required TResult Function() syncTravel,
     required TResult Function(int index, bool checked) toggleCheckList,
+    required TResult Function() refresh,
   }) {
     return delete();
   }
@@ -281,6 +294,7 @@ class _$DeleteImpl implements _Delete {
     TResult? Function()? completeTravel,
     TResult? Function()? syncTravel,
     TResult? Function(int index, bool checked)? toggleCheckList,
+    TResult? Function()? refresh,
   }) {
     return delete?.call();
   }
@@ -294,6 +308,7 @@ class _$DeleteImpl implements _Delete {
     TResult Function()? completeTravel,
     TResult Function()? syncTravel,
     TResult Function(int index, bool checked)? toggleCheckList,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -311,6 +326,7 @@ class _$DeleteImpl implements _Delete {
     required TResult Function(_CompleteTravel value) completeTravel,
     required TResult Function(_SyncTravel value) syncTravel,
     required TResult Function(_ToggleCheckList value) toggleCheckList,
+    required TResult Function(_Refresh value) refresh,
   }) {
     return delete(this);
   }
@@ -324,6 +340,7 @@ class _$DeleteImpl implements _Delete {
     TResult? Function(_CompleteTravel value)? completeTravel,
     TResult? Function(_SyncTravel value)? syncTravel,
     TResult? Function(_ToggleCheckList value)? toggleCheckList,
+    TResult? Function(_Refresh value)? refresh,
   }) {
     return delete?.call(this);
   }
@@ -337,6 +354,7 @@ class _$DeleteImpl implements _Delete {
     TResult Function(_CompleteTravel value)? completeTravel,
     TResult Function(_SyncTravel value)? syncTravel,
     TResult Function(_ToggleCheckList value)? toggleCheckList,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -394,6 +412,7 @@ class _$StartTravelImpl implements _StartTravel {
     required TResult Function() completeTravel,
     required TResult Function() syncTravel,
     required TResult Function(int index, bool checked) toggleCheckList,
+    required TResult Function() refresh,
   }) {
     return startTravel();
   }
@@ -407,6 +426,7 @@ class _$StartTravelImpl implements _StartTravel {
     TResult? Function()? completeTravel,
     TResult? Function()? syncTravel,
     TResult? Function(int index, bool checked)? toggleCheckList,
+    TResult? Function()? refresh,
   }) {
     return startTravel?.call();
   }
@@ -420,6 +440,7 @@ class _$StartTravelImpl implements _StartTravel {
     TResult Function()? completeTravel,
     TResult Function()? syncTravel,
     TResult Function(int index, bool checked)? toggleCheckList,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (startTravel != null) {
@@ -437,6 +458,7 @@ class _$StartTravelImpl implements _StartTravel {
     required TResult Function(_CompleteTravel value) completeTravel,
     required TResult Function(_SyncTravel value) syncTravel,
     required TResult Function(_ToggleCheckList value) toggleCheckList,
+    required TResult Function(_Refresh value) refresh,
   }) {
     return startTravel(this);
   }
@@ -450,6 +472,7 @@ class _$StartTravelImpl implements _StartTravel {
     TResult? Function(_CompleteTravel value)? completeTravel,
     TResult? Function(_SyncTravel value)? syncTravel,
     TResult? Function(_ToggleCheckList value)? toggleCheckList,
+    TResult? Function(_Refresh value)? refresh,
   }) {
     return startTravel?.call(this);
   }
@@ -463,6 +486,7 @@ class _$StartTravelImpl implements _StartTravel {
     TResult Function(_CompleteTravel value)? completeTravel,
     TResult Function(_SyncTravel value)? syncTravel,
     TResult Function(_ToggleCheckList value)? toggleCheckList,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) {
     if (startTravel != null) {
@@ -520,6 +544,7 @@ class _$CompleteTravelImpl implements _CompleteTravel {
     required TResult Function() completeTravel,
     required TResult Function() syncTravel,
     required TResult Function(int index, bool checked) toggleCheckList,
+    required TResult Function() refresh,
   }) {
     return completeTravel();
   }
@@ -533,6 +558,7 @@ class _$CompleteTravelImpl implements _CompleteTravel {
     TResult? Function()? completeTravel,
     TResult? Function()? syncTravel,
     TResult? Function(int index, bool checked)? toggleCheckList,
+    TResult? Function()? refresh,
   }) {
     return completeTravel?.call();
   }
@@ -546,6 +572,7 @@ class _$CompleteTravelImpl implements _CompleteTravel {
     TResult Function()? completeTravel,
     TResult Function()? syncTravel,
     TResult Function(int index, bool checked)? toggleCheckList,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (completeTravel != null) {
@@ -563,6 +590,7 @@ class _$CompleteTravelImpl implements _CompleteTravel {
     required TResult Function(_CompleteTravel value) completeTravel,
     required TResult Function(_SyncTravel value) syncTravel,
     required TResult Function(_ToggleCheckList value) toggleCheckList,
+    required TResult Function(_Refresh value) refresh,
   }) {
     return completeTravel(this);
   }
@@ -576,6 +604,7 @@ class _$CompleteTravelImpl implements _CompleteTravel {
     TResult? Function(_CompleteTravel value)? completeTravel,
     TResult? Function(_SyncTravel value)? syncTravel,
     TResult? Function(_ToggleCheckList value)? toggleCheckList,
+    TResult? Function(_Refresh value)? refresh,
   }) {
     return completeTravel?.call(this);
   }
@@ -589,6 +618,7 @@ class _$CompleteTravelImpl implements _CompleteTravel {
     TResult Function(_CompleteTravel value)? completeTravel,
     TResult Function(_SyncTravel value)? syncTravel,
     TResult Function(_ToggleCheckList value)? toggleCheckList,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) {
     if (completeTravel != null) {
@@ -646,6 +676,7 @@ class _$SyncTravelImpl implements _SyncTravel {
     required TResult Function() completeTravel,
     required TResult Function() syncTravel,
     required TResult Function(int index, bool checked) toggleCheckList,
+    required TResult Function() refresh,
   }) {
     return syncTravel();
   }
@@ -659,6 +690,7 @@ class _$SyncTravelImpl implements _SyncTravel {
     TResult? Function()? completeTravel,
     TResult? Function()? syncTravel,
     TResult? Function(int index, bool checked)? toggleCheckList,
+    TResult? Function()? refresh,
   }) {
     return syncTravel?.call();
   }
@@ -672,6 +704,7 @@ class _$SyncTravelImpl implements _SyncTravel {
     TResult Function()? completeTravel,
     TResult Function()? syncTravel,
     TResult Function(int index, bool checked)? toggleCheckList,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (syncTravel != null) {
@@ -689,6 +722,7 @@ class _$SyncTravelImpl implements _SyncTravel {
     required TResult Function(_CompleteTravel value) completeTravel,
     required TResult Function(_SyncTravel value) syncTravel,
     required TResult Function(_ToggleCheckList value) toggleCheckList,
+    required TResult Function(_Refresh value) refresh,
   }) {
     return syncTravel(this);
   }
@@ -702,6 +736,7 @@ class _$SyncTravelImpl implements _SyncTravel {
     TResult? Function(_CompleteTravel value)? completeTravel,
     TResult? Function(_SyncTravel value)? syncTravel,
     TResult? Function(_ToggleCheckList value)? toggleCheckList,
+    TResult? Function(_Refresh value)? refresh,
   }) {
     return syncTravel?.call(this);
   }
@@ -715,6 +750,7 @@ class _$SyncTravelImpl implements _SyncTravel {
     TResult Function(_CompleteTravel value)? completeTravel,
     TResult Function(_SyncTravel value)? syncTravel,
     TResult Function(_ToggleCheckList value)? toggleCheckList,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) {
     if (syncTravel != null) {
@@ -807,6 +843,7 @@ class _$ToggleCheckListImpl implements _ToggleCheckList {
     required TResult Function() completeTravel,
     required TResult Function() syncTravel,
     required TResult Function(int index, bool checked) toggleCheckList,
+    required TResult Function() refresh,
   }) {
     return toggleCheckList(index, checked);
   }
@@ -820,6 +857,7 @@ class _$ToggleCheckListImpl implements _ToggleCheckList {
     TResult? Function()? completeTravel,
     TResult? Function()? syncTravel,
     TResult? Function(int index, bool checked)? toggleCheckList,
+    TResult? Function()? refresh,
   }) {
     return toggleCheckList?.call(index, checked);
   }
@@ -833,6 +871,7 @@ class _$ToggleCheckListImpl implements _ToggleCheckList {
     TResult Function()? completeTravel,
     TResult Function()? syncTravel,
     TResult Function(int index, bool checked)? toggleCheckList,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (toggleCheckList != null) {
@@ -850,6 +889,7 @@ class _$ToggleCheckListImpl implements _ToggleCheckList {
     required TResult Function(_CompleteTravel value) completeTravel,
     required TResult Function(_SyncTravel value) syncTravel,
     required TResult Function(_ToggleCheckList value) toggleCheckList,
+    required TResult Function(_Refresh value) refresh,
   }) {
     return toggleCheckList(this);
   }
@@ -863,6 +903,7 @@ class _$ToggleCheckListImpl implements _ToggleCheckList {
     TResult? Function(_CompleteTravel value)? completeTravel,
     TResult? Function(_SyncTravel value)? syncTravel,
     TResult? Function(_ToggleCheckList value)? toggleCheckList,
+    TResult? Function(_Refresh value)? refresh,
   }) {
     return toggleCheckList?.call(this);
   }
@@ -876,6 +917,7 @@ class _$ToggleCheckListImpl implements _ToggleCheckList {
     TResult Function(_CompleteTravel value)? completeTravel,
     TResult Function(_SyncTravel value)? syncTravel,
     TResult Function(_ToggleCheckList value)? toggleCheckList,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) {
     if (toggleCheckList != null) {
@@ -895,6 +937,138 @@ abstract class _ToggleCheckList implements CurrentTravelEvent {
   @JsonKey(ignore: true)
   _$$ToggleCheckListImplCopyWith<_$ToggleCheckListImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RefreshImplCopyWith<$Res> {
+  factory _$$RefreshImplCopyWith(
+          _$RefreshImpl value, $Res Function(_$RefreshImpl) then) =
+      __$$RefreshImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RefreshImplCopyWithImpl<$Res>
+    extends _$CurrentTravelEventCopyWithImpl<$Res, _$RefreshImpl>
+    implements _$$RefreshImplCopyWith<$Res> {
+  __$$RefreshImplCopyWithImpl(
+      _$RefreshImpl _value, $Res Function(_$RefreshImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RefreshImpl implements _Refresh {
+  const _$RefreshImpl();
+
+  @override
+  String toString() {
+    return 'CurrentTravelEvent.refresh()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RefreshImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() delete,
+    required TResult Function() startTravel,
+    required TResult Function() completeTravel,
+    required TResult Function() syncTravel,
+    required TResult Function(int index, bool checked) toggleCheckList,
+    required TResult Function() refresh,
+  }) {
+    return refresh();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? delete,
+    TResult? Function()? startTravel,
+    TResult? Function()? completeTravel,
+    TResult? Function()? syncTravel,
+    TResult? Function(int index, bool checked)? toggleCheckList,
+    TResult? Function()? refresh,
+  }) {
+    return refresh?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? delete,
+    TResult Function()? startTravel,
+    TResult Function()? completeTravel,
+    TResult Function()? syncTravel,
+    TResult Function(int index, bool checked)? toggleCheckList,
+    TResult Function()? refresh,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_StartTravel value) startTravel,
+    required TResult Function(_CompleteTravel value) completeTravel,
+    required TResult Function(_SyncTravel value) syncTravel,
+    required TResult Function(_ToggleCheckList value) toggleCheckList,
+    required TResult Function(_Refresh value) refresh,
+  }) {
+    return refresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Delete value)? delete,
+    TResult? Function(_StartTravel value)? startTravel,
+    TResult? Function(_CompleteTravel value)? completeTravel,
+    TResult? Function(_SyncTravel value)? syncTravel,
+    TResult? Function(_ToggleCheckList value)? toggleCheckList,
+    TResult? Function(_Refresh value)? refresh,
+  }) {
+    return refresh?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_StartTravel value)? startTravel,
+    TResult Function(_CompleteTravel value)? completeTravel,
+    TResult Function(_SyncTravel value)? syncTravel,
+    TResult Function(_ToggleCheckList value)? toggleCheckList,
+    TResult Function(_Refresh value)? refresh,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Refresh implements CurrentTravelEvent {
+  const factory _Refresh() = _$RefreshImpl;
 }
 
 /// @nodoc

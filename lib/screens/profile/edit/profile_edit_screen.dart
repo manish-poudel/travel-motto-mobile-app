@@ -184,6 +184,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                     width: double.infinity,
                     child: TMPrimaryButton(
                         //tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        borderRadius: 12,
                         text: "SAVE",
                         showLoading: isLoading,
                         onPressed: () {

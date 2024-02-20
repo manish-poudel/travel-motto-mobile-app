@@ -802,6 +802,7 @@ mixin _$CreateTravelState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -809,9 +810,7 @@ mixin _$CreateTravelState {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)
         ready,
     required TResult Function(String message) error,
@@ -821,6 +820,7 @@ mixin _$CreateTravelState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -828,9 +828,7 @@ mixin _$CreateTravelState {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)?
         ready,
     TResult? Function(String message)? error,
@@ -840,6 +838,7 @@ mixin _$CreateTravelState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -847,9 +846,7 @@ mixin _$CreateTravelState {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)?
         ready,
     TResult Function(String message)? error,
@@ -944,6 +941,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -951,9 +949,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)
         ready,
     required TResult Function(String message) error,
@@ -966,6 +962,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -973,9 +970,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)?
         ready,
     TResult? Function(String message)? error,
@@ -988,6 +983,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -995,9 +991,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)?
         ready,
     TResult Function(String message)? error,
@@ -1055,19 +1049,17 @@ abstract class _$$ReadyImplCopyWith<$Res> {
       __$$ReadyImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {TextEditingController travelNameController,
+      {bool isUpdating,
+      TextEditingController travelNameController,
       TextEditingController travellingToController,
       TextEditingController destinationController,
       TextEditingController latController,
       TextEditingController lngController,
       List<TextEditingController> checkListControllers,
       List<FocusNode> focusNodes,
-      TravelLocation currentLocation,
       DateTime travelDate,
-      OSLocation destination,
       SaveState saveState});
 
-  $OSLocationCopyWith<$Res> get destination;
   $SaveStateCopyWith<$Res> get saveState;
 }
 
@@ -1082,6 +1074,7 @@ class __$$ReadyImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isUpdating = null,
     Object? travelNameController = null,
     Object? travellingToController = null,
     Object? destinationController = null,
@@ -1089,12 +1082,14 @@ class __$$ReadyImplCopyWithImpl<$Res>
     Object? lngController = null,
     Object? checkListControllers = null,
     Object? focusNodes = null,
-    Object? currentLocation = null,
     Object? travelDate = null,
-    Object? destination = null,
     Object? saveState = null,
   }) {
     return _then(_$ReadyImpl(
+      isUpdating: null == isUpdating
+          ? _value.isUpdating
+          : isUpdating // ignore: cast_nullable_to_non_nullable
+              as bool,
       travelNameController: null == travelNameController
           ? _value.travelNameController
           : travelNameController // ignore: cast_nullable_to_non_nullable
@@ -1123,31 +1118,15 @@ class __$$ReadyImplCopyWithImpl<$Res>
           ? _value._focusNodes
           : focusNodes // ignore: cast_nullable_to_non_nullable
               as List<FocusNode>,
-      currentLocation: null == currentLocation
-          ? _value.currentLocation
-          : currentLocation // ignore: cast_nullable_to_non_nullable
-              as TravelLocation,
       travelDate: null == travelDate
           ? _value.travelDate
           : travelDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      destination: null == destination
-          ? _value.destination
-          : destination // ignore: cast_nullable_to_non_nullable
-              as OSLocation,
       saveState: null == saveState
           ? _value.saveState
           : saveState // ignore: cast_nullable_to_non_nullable
               as SaveState,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OSLocationCopyWith<$Res> get destination {
-    return $OSLocationCopyWith<$Res>(_value.destination, (value) {
-      return _then(_value.copyWith(destination: value));
-    });
   }
 
   @override
@@ -1163,20 +1142,22 @@ class __$$ReadyImplCopyWithImpl<$Res>
 
 class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
   const _$ReadyImpl(
-      {required this.travelNameController,
+      {this.isUpdating = false,
+      required this.travelNameController,
       required this.travellingToController,
       required this.destinationController,
       required this.latController,
       required this.lngController,
       required final List<TextEditingController> checkListControllers,
       required final List<FocusNode> focusNodes,
-      required this.currentLocation,
       required this.travelDate,
-      required this.destination,
       this.saveState = const SaveState.idle()})
       : _checkListControllers = checkListControllers,
         _focusNodes = focusNodes;
 
+  @override
+  @JsonKey()
+  final bool isUpdating;
   @override
   final TextEditingController travelNameController;
   @override
@@ -1205,18 +1186,14 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
   }
 
   @override
-  final TravelLocation currentLocation;
-  @override
   final DateTime travelDate;
-  @override
-  final OSLocation destination;
   @override
   @JsonKey()
   final SaveState saveState;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateTravelState.ready(travelNameController: $travelNameController, travellingToController: $travellingToController, destinationController: $destinationController, latController: $latController, lngController: $lngController, checkListControllers: $checkListControllers, focusNodes: $focusNodes, currentLocation: $currentLocation, travelDate: $travelDate, destination: $destination, saveState: $saveState)';
+    return 'CreateTravelState.ready(isUpdating: $isUpdating, travelNameController: $travelNameController, travellingToController: $travellingToController, destinationController: $destinationController, latController: $latController, lngController: $lngController, checkListControllers: $checkListControllers, focusNodes: $focusNodes, travelDate: $travelDate, saveState: $saveState)';
   }
 
   @override
@@ -1224,6 +1201,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'CreateTravelState.ready'))
+      ..add(DiagnosticsProperty('isUpdating', isUpdating))
       ..add(DiagnosticsProperty('travelNameController', travelNameController))
       ..add(
           DiagnosticsProperty('travellingToController', travellingToController))
@@ -1232,9 +1210,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
       ..add(DiagnosticsProperty('lngController', lngController))
       ..add(DiagnosticsProperty('checkListControllers', checkListControllers))
       ..add(DiagnosticsProperty('focusNodes', focusNodes))
-      ..add(DiagnosticsProperty('currentLocation', currentLocation))
       ..add(DiagnosticsProperty('travelDate', travelDate))
-      ..add(DiagnosticsProperty('destination', destination))
       ..add(DiagnosticsProperty('saveState', saveState));
   }
 
@@ -1243,6 +1219,8 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReadyImpl &&
+            (identical(other.isUpdating, isUpdating) ||
+                other.isUpdating == isUpdating) &&
             (identical(other.travelNameController, travelNameController) ||
                 other.travelNameController == travelNameController) &&
             (identical(other.travellingToController, travellingToController) ||
@@ -1257,12 +1235,8 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
                 .equals(other._checkListControllers, _checkListControllers) &&
             const DeepCollectionEquality()
                 .equals(other._focusNodes, _focusNodes) &&
-            (identical(other.currentLocation, currentLocation) ||
-                other.currentLocation == currentLocation) &&
             (identical(other.travelDate, travelDate) ||
                 other.travelDate == travelDate) &&
-            (identical(other.destination, destination) ||
-                other.destination == destination) &&
             (identical(other.saveState, saveState) ||
                 other.saveState == saveState));
   }
@@ -1270,6 +1244,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      isUpdating,
       travelNameController,
       travellingToController,
       destinationController,
@@ -1277,9 +1252,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
       lngController,
       const DeepCollectionEquality().hash(_checkListControllers),
       const DeepCollectionEquality().hash(_focusNodes),
-      currentLocation,
       travelDate,
-      destination,
       saveState);
 
   @JsonKey(ignore: true)
@@ -1293,6 +1266,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -1300,14 +1274,13 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)
         ready,
     required TResult Function(String message) error,
   }) {
     return ready(
+        isUpdating,
         travelNameController,
         travellingToController,
         destinationController,
@@ -1315,9 +1288,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
         lngController,
         checkListControllers,
         focusNodes,
-        currentLocation,
         travelDate,
-        destination,
         saveState);
   }
 
@@ -1326,6 +1297,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -1333,14 +1305,13 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)?
         ready,
     TResult? Function(String message)? error,
   }) {
     return ready?.call(
+        isUpdating,
         travelNameController,
         travellingToController,
         destinationController,
@@ -1348,9 +1319,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
         lngController,
         checkListControllers,
         focusNodes,
-        currentLocation,
         travelDate,
-        destination,
         saveState);
   }
 
@@ -1359,6 +1328,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -1366,9 +1336,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)?
         ready,
     TResult Function(String message)? error,
@@ -1376,6 +1344,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
   }) {
     if (ready != null) {
       return ready(
+          isUpdating,
           travelNameController,
           travellingToController,
           destinationController,
@@ -1383,9 +1352,7 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
           lngController,
           checkListControllers,
           focusNodes,
-          currentLocation,
           travelDate,
-          destination,
           saveState);
     }
     return orElse();
@@ -1428,18 +1395,18 @@ class _$ReadyImpl with DiagnosticableTreeMixin implements _Ready {
 
 abstract class _Ready implements CreateTravelState {
   const factory _Ready(
-      {required final TextEditingController travelNameController,
+      {final bool isUpdating,
+      required final TextEditingController travelNameController,
       required final TextEditingController travellingToController,
       required final TextEditingController destinationController,
       required final TextEditingController latController,
       required final TextEditingController lngController,
       required final List<TextEditingController> checkListControllers,
       required final List<FocusNode> focusNodes,
-      required final TravelLocation currentLocation,
       required final DateTime travelDate,
-      required final OSLocation destination,
       final SaveState saveState}) = _$ReadyImpl;
 
+  bool get isUpdating;
   TextEditingController get travelNameController;
   TextEditingController get travellingToController;
   TextEditingController get destinationController;
@@ -1447,9 +1414,7 @@ abstract class _Ready implements CreateTravelState {
   TextEditingController get lngController;
   List<TextEditingController> get checkListControllers;
   List<FocusNode> get focusNodes;
-  TravelLocation get currentLocation;
   DateTime get travelDate;
-  OSLocation get destination;
   SaveState get saveState;
   @JsonKey(ignore: true)
   _$$ReadyImplCopyWith<_$ReadyImpl> get copyWith =>
@@ -1530,6 +1495,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -1537,9 +1503,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)
         ready,
     required TResult Function(String message) error,
@@ -1552,6 +1516,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -1559,9 +1524,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)?
         ready,
     TResult? Function(String message)? error,
@@ -1574,6 +1537,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
+            bool isUpdating,
             TextEditingController travelNameController,
             TextEditingController travellingToController,
             TextEditingController destinationController,
@@ -1581,9 +1545,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
             TextEditingController lngController,
             List<TextEditingController> checkListControllers,
             List<FocusNode> focusNodes,
-            TravelLocation currentLocation,
             DateTime travelDate,
-            OSLocation destination,
             SaveState saveState)?
         ready,
     TResult Function(String message)? error,

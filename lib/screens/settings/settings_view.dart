@@ -51,6 +51,7 @@ class _SettingsViewState extends State<SettingsView> {
       data: AppTheme.getTheme(),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           leading: IconButton(
               icon: const Icon(
                 Icons.arrow_back_ios,
@@ -61,7 +62,7 @@ class _SettingsViewState extends State<SettingsView> {
             "Settings",
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 14,
             ),
           ),
         ),

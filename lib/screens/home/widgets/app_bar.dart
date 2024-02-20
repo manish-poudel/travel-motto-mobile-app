@@ -5,8 +5,12 @@ import 'package:go_router/go_router.dart';
 class TopAppBar extends StatelessWidget {
   final String travellerName;
   final String? travellerPhotoUrl;
-  const TopAppBar(
-      {super.key, required this.travellerName, this.travellerPhotoUrl});
+
+  const TopAppBar({
+    super.key,
+    required this.travellerName,
+    this.travellerPhotoUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +22,18 @@ class TopAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Text(
-              "Hello,",
-              style: TextStyle(fontSize: 14, color: Color(0xff424530)),
+              "Hello, ",
+              style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black,
+                  fontWeight: FontWeight.normal),
             ),
             Text(
               travellerName,
               style: const TextStyle(
-                  fontSize: 21,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff424530)),
+                  fontSize: 14,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.grey),
             ),
           ],
         ),

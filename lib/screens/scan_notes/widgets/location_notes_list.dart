@@ -44,16 +44,13 @@ class LocationNotesList extends StatelessWidget {
                     style: const TextStyle(fontSize: 14, color: Colors.black),
                   ),
                   Align(
-                    alignment: Alignment.bottomRight,
+                    alignment: Alignment.bottomLeft,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 0.0),
                       child: Text(
                         locationNotes[index].authorName,
                         style: const TextStyle(
-                            fontFamily: 'Dancing',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black54),
+                            fontSize: 12, color: Colors.black54),
                       ),
                     ),
                   ),
