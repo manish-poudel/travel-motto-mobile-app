@@ -176,7 +176,8 @@ class _YourCurrentTravelState extends State<YourCurrentTravel> {
                                     ],
                                   ),
                                 ),
-                          widget.currentTravel.completedCheckList == null
+                          widget.currentTravel.completedCheckList == null ||
+                                  widget.currentTravel.travel.checkList == null
                               ? const SizedBox.shrink()
                               : Row(
                                   children: [
