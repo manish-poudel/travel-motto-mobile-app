@@ -16,7 +16,6 @@ part 'create_travel_state.dart';
 part 'create_travel_bloc.freezed.dart';
 
 class CreateTravelBloc extends Bloc<CreateTravelEvent, CreateTravelState> {
-  final OSLocation destination;
   final LocationRepository locationRepository;
   final TravelsRepository travelsRepository;
   final CurrentTravelRepository currentTravelRepository;
@@ -31,13 +30,16 @@ class CreateTravelBloc extends Bloc<CreateTravelEvent, CreateTravelState> {
   late final List<FocusNode> focusNodes;
 
   late Map<String, dynamic> formControllers;
+  final OSLocation? destination;
+  final Travel? travel;
 
   CreateTravelBloc(
-      {required this.destination,
+      {this.destination,
       required this.locationRepository,
       required this.travelsRepository,
       required this.currentTravelRepository,
-      required this.travellerProfileRepository})
+      required this.travellerProfileRepository,
+      this.travel})
       : super(const _Initial()) {
     on<CreateTravelEvent>((event, emit) async {
       await event.when(
@@ -51,48 +53,87 @@ class CreateTravelBloc extends Bloc<CreateTravelEvent, CreateTravelState> {
 
   _onEventStarted(Emitter<CreateTravelState> emit) async {
     try {
-      TravelLocation? currentLocation =
-          await locationRepository.getCurrentLocation();
-      if (currentLocation == null) {
-        return emit((state as _Ready).copyWith(
-            saveState: const SaveState.failed(
-                message: "Please enabled your location")));
+      if (travel == null) {
+        await _onFirstTimeTravelCreate(emit);
+      } else {
+        _onUpdateCurrentTravel(emit);
       }
-
-      travelNameController =
-          TextEditingController(text: _genInitialTravelName(currentLocation));
-      travellingFromController =
-          TextEditingController(text: currentLocation.getReadableLocation());
-      destinationController =
-          TextEditingController(text: destination.displayName);
-      latController = TextEditingController(text: destination.lat ?? '');
-      lngController = TextEditingController(text: destination.lon ?? '');
-      checkListControllers = [TextEditingController()];
-      focusNodes = [FocusNode()];
-      emit(CreateTravelState.ready(
-          travelNameController: travelNameController,
-          travellingToController: travellingFromController,
-          destinationController: destinationController,
-          latController: latController,
-          lngController: lngController,
-          checkListControllers: checkListControllers,
-          focusNodes: focusNodes,
-          currentLocation: currentLocation,
-          travelDate: DateTime.now(),
-          destination: destination));
     } catch (err) {
       emit(const CreateTravelState.error(
           message: "Something went wrong.Try again"));
     }
   }
 
+  _onFirstTimeTravelCreate(Emitter<CreateTravelState> emit) async {
+    TravelLocation? currentLocation =
+        await locationRepository.getCurrentLocation();
+    if (currentLocation == null) {
+      return emit((state as _Ready).copyWith(
+          saveState:
+              const SaveState.failed(message: "Please enabled your location")));
+    }
+    travelNameController =
+        TextEditingController(text: _genInitialTravelName(currentLocation));
+    travellingFromController =
+        TextEditingController(text: currentLocation.getReadableLocation());
+    destinationController =
+        TextEditingController(text: destination?.displayName);
+    latController = TextEditingController(text: destination?.lat ?? '');
+    lngController = TextEditingController(text: destination?.lon ?? '');
+    checkListControllers = [TextEditingController()];
+    focusNodes = [FocusNode()];
+    emit(CreateTravelState.ready(
+      travelNameController: travelNameController,
+      travellingToController: travellingFromController,
+      destinationController: destinationController,
+      latController: latController,
+      lngController: lngController,
+      checkListControllers: checkListControllers,
+      focusNodes: focusNodes,
+      travelDate: DateTime.now(),
+    ));
+  }
+
+  _onUpdateCurrentTravel(Emitter<CreateTravelState> emit) {
+    travelNameController = TextEditingController(text: travel?.name);
+    travellingFromController =
+        TextEditingController(text: travel?.startFullAddress);
+    destinationController = TextEditingController(text: travel?.endFullAddress);
+    latController = TextEditingController(
+        text: travel?.endPos == null ? '' : travel?.endPos?.first.toString());
+    lngController = TextEditingController(
+        text: travel?.endPos == null ? '' : travel?.endPos?.last.toString());
+    if (travel?.checkList == null) {
+      checkListControllers = [TextEditingController()];
+      focusNodes = [FocusNode()];
+    } else {
+      checkListControllers = [];
+      focusNodes = [];
+      travel?.checkList?.forEach((element) {
+        checkListControllers.add(TextEditingController(text: element.name));
+        focusNodes.add(FocusNode());
+      });
+    }
+
+    emit(CreateTravelState.ready(
+        isUpdating: true,
+        travelNameController: travelNameController,
+        travellingToController: travellingFromController,
+        destinationController: destinationController,
+        latController: latController,
+        lngController: lngController,
+        checkListControllers: checkListControllers,
+        focusNodes: focusNodes,
+        travelDate: travel!.startDate));
+  }
+
   String _genInitialTravelName(TravelLocation travelLocation) {
     try {
       String travelLocationDisplayName = travelLocation.getReadableLocation();
-      if (destination.displayName != null &&
+      if (destination!.displayName != null &&
           travelLocationDisplayName.isNotEmpty &&
-          destination.displayName!.isNotEmpty) {
-        return "${travelLocationDisplayName.split(",")[0]} to ${destination.displayName!.split(",")[0]}";
+          destination!.displayName!.isNotEmpty) {
+        return "${travelLocationDisplayName.split(",")[0]} to ${destination!.displayName!.split(",")[0]}";
       }
       return '';
     } catch (err) {
@@ -152,65 +193,128 @@ class CreateTravelBloc extends Bloc<CreateTravelEvent, CreateTravelState> {
 
   _onSave(Emitter<CreateTravelState> emit) async {
     try {
-      emit((state as _Ready).copyWith(saveState: const SaveState.saving()));
-
-      if (travelNameController.text.isEmpty) {
-        return emit((state as _Ready).copyWith(
-            saveState:
-                const SaveState.failed(message: "Please provide travel name")));
+      if (travel == null) {
+        await _saveTravelData(emit);
+      } else {
+        await _updateCurrentTravel(emit);
       }
-      TravelLocation? currentLocation =
-          await locationRepository.getCurrentLocation();
-      if (currentLocation == null) {
-        return emit((state as _Ready).copyWith(
-            saveState: const SaveState.failed(
-                message: "Please enabled your location")));
-      }
-      var id = travelsRepository.generateFirestoreDocId();
-      List<double> startPos = [
-        currentLocation.position.latitude,
-        currentLocation.position.longitude
-      ];
-      List<double>? endPos =
-          latController.text.isEmpty || lngController.text.isEmpty
-              ? null
-              : [
-                  double.parse(latController.text.trim()),
-                  double.parse(lngController.text.trim())
-                ];
-
-      List<CheckList> checkLists = [];
-
-      for (var element in (state as _Ready).checkListControllers) {
-        if (element.text.trim().isNotEmpty) {
-          checkLists.add(CheckList(name: element.text, status: "unchecked"));
-        }
-      }
-
-      await travelsRepository
-          .saveCurrentTravel(
-              travel: Travel(
-                  id: id,
-                  status: "not_started",
-                  name: travelNameController.text.trim(),
-                  startPos: startPos,
-                  endPos: endPos,
-                  startFullAddress: travellingFromController.text.trim(),
-                  endFullAddress: destinationController.text.trim(),
-                  startDate: (state as _Ready).travelDate,
-                  checkList: checkLists.isEmpty ? null : checkLists))
-          .then((value) {
-        travellerProfileRepository.updateCurrentTravelId(id: id);
-        currentTravelRepository.streamCurrentTravel();
-        emit((state as _Ready).copyWith(saveState: const SaveState.saved()));
-      }).catchError((err) {
-        emit((state as _Ready)
-            .copyWith(saveState: SaveState.failed(message: err.toString())));
-      });
     } catch (err) {
       emit((state as _Ready)
           .copyWith(saveState: SaveState.failed(message: err.toString())));
     }
+  }
+
+  _saveTravelData(Emitter<CreateTravelState> emit) async {
+    emit((state as _Ready).copyWith(saveState: const SaveState.saving()));
+
+    if (travelNameController.text.isEmpty) {
+      return emit((state as _Ready).copyWith(
+          saveState:
+              const SaveState.failed(message: "Please provide travel name")));
+    }
+    TravelLocation? currentLocation =
+        await locationRepository.getCurrentLocation();
+    if (currentLocation == null) {
+      return emit((state as _Ready).copyWith(
+          saveState:
+              const SaveState.failed(message: "Please enabled your location")));
+    }
+    var id = travelsRepository.generateFirestoreDocId();
+    List<double> startPos = [
+      currentLocation.position.latitude,
+      currentLocation.position.longitude
+    ];
+    List<double>? endPos =
+        latController.text.isEmpty || lngController.text.isEmpty
+            ? null
+            : [
+                double.parse(latController.text.trim()),
+                double.parse(lngController.text.trim())
+              ];
+
+    List<CheckList> checkLists = [];
+
+    for (var element in (state as _Ready).checkListControllers) {
+      if (element.text.trim().isNotEmpty) {
+        if (checkLists
+            .where((checkList) => checkList.name == element.text.trim())
+            .isEmpty) {
+          checkLists.add(CheckList(name: element.text, status: "unchecked"));
+        }
+      }
+    }
+
+    await travelsRepository
+        .saveCurrentTravel(
+            travel: Travel(
+                id: id,
+                status: "not_started",
+                name: travelNameController.text.trim(),
+                startPos: startPos,
+                endPos: endPos,
+                startFullAddress: travellingFromController.text.trim(),
+                endFullAddress: destinationController.text.trim(),
+                startDate: (state as _Ready).travelDate,
+                checkList: checkLists.isEmpty ? null : checkLists))
+        .then((value) {
+      travellerProfileRepository.updateCurrentTravelId(id: id);
+      currentTravelRepository.streamCurrentTravel();
+      emit((state as _Ready).copyWith(saveState: const SaveState.saved()));
+    }).catchError((err) {
+      emit((state as _Ready)
+          .copyWith(saveState: SaveState.failed(message: err.toString())));
+    });
+  }
+
+  _updateCurrentTravel(Emitter<CreateTravelState> emit) async {
+    emit((state as _Ready).copyWith(saveState: const SaveState.saving()));
+
+    if (travelNameController.text.isEmpty) {
+      return emit((state as _Ready).copyWith(
+          saveState:
+              const SaveState.failed(message: "Please provide travel name")));
+    }
+
+    List<CheckList> checkLists = [];
+
+    for (var element in (state as _Ready).checkListControllers) {
+      if (element.text.trim().isNotEmpty) {
+        if (checkLists
+            .where((checkList) => checkList.name == element.text.trim())
+            .isEmpty) {
+          CheckList? checkList;
+          List<CheckList>? matchingCheckLists = travel?.checkList
+              ?.where((checkList) => checkList.name == element.text.trim())
+              .toList();
+          if (matchingCheckLists != null && matchingCheckLists.isNotEmpty) {
+            checkList = matchingCheckLists.first;
+          }
+
+          checkLists.add(CheckList(
+              name: element.text,
+              status: checkList == null ? "unchecked" : checkList.status));
+        }
+      }
+    }
+
+    Travel updatedTravel = travel!.copyWith(
+        name: travelNameController.text.trim(),
+        startDate: (state as _Ready).travelDate,
+        checkList: checkLists.isEmpty ? null : checkLists);
+
+    if (updatedTravel == travel) {
+      return emit(
+          (state as _Ready).copyWith(saveState: const SaveState.saved()));
+    }
+    await travelsRepository
+        .updateCurrentTravel(travel: updatedTravel)
+        .then((value) {
+      currentTravelRepository.updateTravel(updatedTravel);
+      emit((state as _Ready).copyWith(saveState: const SaveState.saved()));
+    }).catchError((err) {
+      emit((state as _Ready)
+          .copyWith(saveState: SaveState.failed(message: err.toString())));
+    });
   }
 
   _onUpdateTravelDate(DateTime date, Emitter<CreateTravelState> emit) {

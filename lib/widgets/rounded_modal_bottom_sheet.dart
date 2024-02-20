@@ -29,6 +29,7 @@ showRoundedModalBottomSheet(
     bool isDismissable = true,
     bool enableDrag = true,
     bool isScrollControlled = false,
+    Color backgroundColor = Colors.white,
     required Widget Function(BuildContext) builder}) {
   showModalBottomSheet(
       isDismissible: isDismissable,
@@ -38,6 +39,6 @@ showRoundedModalBottomSheet(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(12.0)),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundColor,
       builder: builder);
 }

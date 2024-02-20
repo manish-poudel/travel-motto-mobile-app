@@ -239,9 +239,8 @@ class __$$TravelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true)
-class _$TravelImpl implements _Travel {
+@JsonSerializable()
+class _$TravelImpl extends _Travel {
   _$TravelImpl(
       {required this.id,
       required this.status,
@@ -259,7 +258,8 @@ class _$TravelImpl implements _Travel {
         _endPos = endPos,
         _startedPos = startedPos,
         _completedPos = completedPos,
-        _checkList = checkList;
+        _checkList = checkList,
+        super._();
 
   factory _$TravelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TravelImplFromJson(json);
@@ -389,7 +389,7 @@ class _$TravelImpl implements _Travel {
   }
 }
 
-abstract class _Travel implements Travel {
+abstract class _Travel extends Travel {
   factory _Travel(
       {required final String id,
       required final String status,
@@ -403,6 +403,7 @@ abstract class _Travel implements Travel {
       @DateTimeStringConverter() required final DateTime startDate,
       @DateTimeStringConverter() final DateTime? endDate,
       required final List<CheckList>? checkList}) = _$TravelImpl;
+  _Travel._() : super._();
 
   factory _Travel.fromJson(Map<String, dynamic> json) = _$TravelImpl.fromJson;
 

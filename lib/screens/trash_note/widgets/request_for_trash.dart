@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_motto/theme/theme.dart';
+import 'package:travel_motto/utils/location_utils.dart';
 import 'package:travel_motto/widgets/tm_primary_button.dart';
 
 class RequestForTrash extends StatelessWidget {
@@ -14,7 +15,9 @@ class RequestForTrash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String distance = missedDistance?.round().toString() ?? '';
+    String distance = missedDistance == null
+        ? ''
+        : LocationUtils.readableDistance(missedDistance!.toInt());
     return Theme(
       data: AppTheme.getTheme(),
       child: Padding(
@@ -32,7 +35,7 @@ class RequestForTrash extends StatelessWidget {
                     fontFamily: 'Poppins'),
               ),
               Text(
-                "You are currently $distance meters away from the note's actual location. Deleting it is not possible from this distance, but you can request its disposal by nearby travellers. Would you like to make a trash request?",
+                "You are about $distance away from the note's actual location. Deleting it is not possible from this distance, but you can request its disposal by nearby travellers. Would you like to make a trash request?",
                 style: const TextStyle(fontSize: 14, fontFamily: 'Poppins'),
               ),
               Align(
@@ -40,6 +43,7 @@ class RequestForTrash extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 24.0),
                   child: TMPrimaryButton(
+                      borderRadius: 12,
                       text: "Confirm",
                       onPressed: onPressed,
                       showLoading: showLoading),

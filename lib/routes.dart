@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travel_motto/models/current_travel.dart/current_travel.dart';
 import 'package:travel_motto/models/location_notes/location_notes.dart';
 import 'package:travel_motto/models/open_street_location/os_location.dart';
+import 'package:travel_motto/models/travel/travel.dart';
 import 'package:travel_motto/models/travel_game/travel_game.dart';
 import 'package:travel_motto/models/travel_game_organiser.dart/travel_game_organiser.dart';
 import 'package:travel_motto/models/travel_game_type/travel_game_type.dart';
@@ -258,6 +259,26 @@ final GoRouter routes = GoRouter(
           return BlocProvider(
               create: (_) => CreateTravelBloc(
                   destination: osLocation,
+                  travellerProfileRepository: context
+                      .read<RepositoryContainer>()
+                      .travellerProfileRepository,
+                  currentTravelRepository: context
+                      .read<RepositoryContainer>()
+                      .currentTravelRepository,
+                  travelsRepository:
+                      context.read<RepositoryContainer>().travelsRepository,
+                  locationRepository:
+                      context.read<RepositoryContainer>().locationRepository),
+              child: const CreateTravelScreen());
+        }),
+    GoRoute(
+        name: 'update_travel',
+        path: '/update_travel',
+        builder: (BuildContext context, GoRouterState state) {
+          Travel? travel = state.extra as Travel;
+          return BlocProvider(
+              create: (_) => CreateTravelBloc(
+                  travel: travel,
                   travellerProfileRepository: context
                       .read<RepositoryContainer>()
                       .travellerProfileRepository,

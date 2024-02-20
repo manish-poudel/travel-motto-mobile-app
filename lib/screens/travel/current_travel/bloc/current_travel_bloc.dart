@@ -35,7 +35,8 @@ class CurrentTravelBloc extends Bloc<CurrentTravelEvent, CurrentTravelState> {
           completeTravel: () async => await _onCompleteTravel(emit),
           toggleCheckList: (int index, bool checked) =>
               _onToggleCheckList(index, checked, emit),
-          syncTravel: () => _onSyncTravel(emit));
+          syncTravel: () => _onSyncTravel(emit),
+          refresh: () => _onRefresh(emit));
     });
   }
 
@@ -171,6 +172,16 @@ class CurrentTravelBloc extends Bloc<CurrentTravelEvent, CurrentTravelState> {
     if (currentTravel != (state as _Ready).currentTravel) {
       travelsRepository.syncCurrentTravel(
           travel: (state as _Ready).currentTravel.travel);
+    }
+  }
+
+  _onRefresh(Emitter<CurrentTravelState> emit) {
+    CurrentTravel? currentTravel =
+        CurrentTravelRepository.currentTravelStreamData.currentTravel;
+    if (currentTravel == null) {
+      return;
+    } else {
+      emit((state as _Ready).copyWith(currentTravel: currentTravel));
     }
   }
 }

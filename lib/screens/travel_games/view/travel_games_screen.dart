@@ -93,6 +93,8 @@ class _TravelGamesScreenState extends State<TravelGamesScreen> {
                                                 showRoundedModalBottomSheet(
                                                     context: context,
                                                     isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.white,
                                                     builder: (context) {
                                                       return Padding(
                                                         padding: MediaQuery.of(
@@ -144,6 +146,11 @@ class _TravelGamesScreenState extends State<TravelGamesScreen> {
                                                                         top:
                                                                             16.0),
                                                                 child: TMRoundedTextField(
+                                                                    borderColor:
+                                                                        Theme.of(context)
+                                                                            .primaryColor,
+                                                                    borderWidth:
+                                                                        2,
                                                                     hintText:
                                                                         "Passcode",
                                                                     controller:

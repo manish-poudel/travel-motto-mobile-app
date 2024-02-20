@@ -130,19 +130,15 @@ class _NotesReaderScreenState extends State<NotesReaderScreen> {
                                     Text(
                                       locationNotes.authorName,
                                       style: TextStyle(
-                                          fontFamily: 'Dancing',
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.grey.shade500),
+                                          fontSize: 12,
+                                          color: Colors.grey.shade300),
                                     ),
                                     Text(
                                       locationNotes.fullAddress,
                                       textAlign: TextAlign.end,
                                       style: TextStyle(
-                                          fontFamily: 'Dancing',
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.grey.shade500),
+                                          fontSize: 12,
+                                          color: Colors.grey.shade300),
                                     ),
                                   ],
                                 ),

@@ -9,28 +9,29 @@ class YourLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return locationState.whenOrNull(fetching: () {
-          return Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.location_pin,
-                  size: 28,
-                  color: Colors.red.withOpacity(0.6),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 8.0),
-                  child: Text(
-                    "fetching your location...",
-                    style: TextStyle(fontSize: 12),
-                  ),
-                )
-              ],
-            ),
-          );
+          return const SizedBox.shrink();
+          // return Padding(
+          //   padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 8.0),
+          //   child: Row(
+          //     children: [
+          //       Icon(
+          //         Icons.location_pin,
+          //         size: 28,
+          //         color: Colors.red.withOpacity(0.6),
+          //       ),
+          //       const Padding(
+          //         padding: EdgeInsets.only(left: 8.0),
+          //         child: Text(
+          //           "fetching your location...",
+          //           style: TextStyle(fontSize: 12),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // );
         }, fetched: (travelLocation) {
           return Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 8.0),
+            padding: const EdgeInsets.only(left: 16.0, right: 40.0, top: 0.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +50,7 @@ class YourLocation extends StatelessWidget {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(
-                          left: 16.0,
+                          left: 4.0,
                         ),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,

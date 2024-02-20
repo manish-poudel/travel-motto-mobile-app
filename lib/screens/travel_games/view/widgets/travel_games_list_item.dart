@@ -33,7 +33,7 @@ class TravelGamesListItem extends StatelessWidget {
                           child: Image.network(
                             travelGame.photoUrl!,
                             fit: BoxFit.fill,
-                            height: 240,
+                            height: 320,
                             width: double.infinity,
                           ),
                         ),

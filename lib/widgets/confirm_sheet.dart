@@ -40,6 +40,7 @@ class ConfirmSheet extends StatelessWidget {
                 child: TMPrimaryButton(
                   text: buttonText,
                   onPressed: onPressed,
+                  borderRadius: 12,
                 ),
               ),
             )

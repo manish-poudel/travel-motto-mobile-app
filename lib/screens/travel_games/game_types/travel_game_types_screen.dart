@@ -83,6 +83,7 @@ class _TravelGameTypeScreenState extends State<TravelGameTypeScreen> {
                                                 width: MediaQuery.of(context)
                                                     .size
                                                     .width,
+                                                height: 240,
                                                 travelGameType:
                                                     travelGameTypes[index]),
                                           ),

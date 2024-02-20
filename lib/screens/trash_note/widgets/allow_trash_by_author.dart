@@ -35,6 +35,7 @@ class AllowTrashByAuthor extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 24.0),
                   child: TMPrimaryButton(
+                    borderRadius: 12,
                     text: "Confirm",
                     onPressed: onPressed,
                     showLoading: showLoading,

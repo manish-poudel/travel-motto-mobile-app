@@ -51,6 +51,10 @@ class TMRoundedTextField extends StatelessWidget {
             borderSide: BorderSide(color: borderColor, width: borderWidth),
             borderRadius: BorderRadius.circular(borderRadius),
           ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: borderColor, width: borderWidth),
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
           filled: true,
           hintStyle: TextStyle(
               color: hintColor,

@@ -9,4 +9,5 @@ class CurrentTravelEvent with _$CurrentTravelEvent {
   const factory CurrentTravelEvent.syncTravel() = _SyncTravel;
   const factory CurrentTravelEvent.toggleCheckList(
       {required int index, required bool checked}) = _ToggleCheckList;
+  const factory CurrentTravelEvent.refresh() = _Refresh;
 }

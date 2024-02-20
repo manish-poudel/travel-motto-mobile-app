@@ -17,23 +17,23 @@ class TravelGameNavigator extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "Featured travel games",
+              "Travel Games",
               style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  fontFamily: 'Roboto'),
+                color: Colors.black87,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
             ),
             GestureDetector(
               onTap: () {
                 context.push('/travel_game_organisers');
               },
               child: Text(
-                "View more",
+                "See all",
                 style: TextStyle(
                     color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Roboto'),
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold),
               ),
             )
           ],
@@ -41,7 +41,7 @@ class TravelGameNavigator extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: SizedBox(
-            height: 120,
+            height: 280,
             child: PageView.builder(
                 itemCount: featuredTravelGameType.length,
                 scrollDirection: Axis.horizontal,
@@ -53,6 +53,7 @@ class TravelGameNavigator extends StatelessWidget {
                     },
                     child: TravelGameTypeListItem(
                         width: MediaQuery.of(context).size.width * 0.92,
+                        height: 280,
                         travelGameType: featuredTravelGameType[index]),
                   );
                 }),

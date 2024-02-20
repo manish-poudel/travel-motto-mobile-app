@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:travel_motto/models/converters/datetime_string_converter.dart';
 
 part 'travel.g.dart';
@@ -9,6 +10,7 @@ part 'travel.freezed.dart';
 @freezed
 class Travel with _$Travel {
   @JsonSerializable(explicitToJson: true)
+  const Travel._();
   factory Travel(
       {required String id,
       required String status,
@@ -24,6 +26,19 @@ class Travel with _$Travel {
       required List<CheckList>? checkList}) = _Travel;
 
   factory Travel.fromJson(Map<String, Object?> json) => _$TravelFromJson(json);
+
+  double? totalTravelDistance() {
+    try {
+      if (endPos == null) {
+        return null;
+      } else {
+        return Geolocator.distanceBetween(
+            startPos.first, startPos.last, endPos!.first, endPos!.last);
+      }
+    } catch (err) {
+      return null;
+    }
+  }
 }
 
 @freezed
