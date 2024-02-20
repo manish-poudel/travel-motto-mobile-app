@@ -82,8 +82,11 @@ class CurrentTravelRepository {
   updateTravel(Travel travel) {
     currentTravelStreamData = CurrentTravelStreamData(
         process: StreamProcess.done,
-        currentTravel:
-            currentTravelStreamData.currentTravel?.copyWith(travel: travel));
+        currentTravel: currentTravelStreamData.currentTravel?.copyWith(
+            travel: travel,
+            completedCheckList: travel.checkList
+                ?.where((element) => element.status == "checked")
+                .length));
     _currentTravelController.sink.add(currentTravelStreamData);
   }
 
