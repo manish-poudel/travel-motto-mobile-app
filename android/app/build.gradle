@@ -29,6 +29,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 
+
 android {
     namespace "com.example.travel_motto"
     compileSdkVersion flutter.compileSdkVersion
@@ -49,7 +50,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.travelmotto.androidapp"
+        applicationId "com.omekus.travelmotto"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion
@@ -74,7 +75,24 @@ android {
            // signingConfig signingConfigs.debug
              signingConfig signingConfigs.release
         }
+
+        debug{
+             signingConfig signingConfigs.debug
+        }
     }
+
+    flavorDimensions "default"
+    productFlavors {
+    prod {
+        dimension "default"
+        resValue "string", "app_name", "TravelMotto"
+    }
+    dev {
+        dimension "default"
+        resValue "string", "app_name", "TravelMotto Dev"
+        applicationIdSuffix ".development"
+    }
+}
 }
 
 flutter {

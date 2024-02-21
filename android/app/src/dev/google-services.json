@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "860150173112",
-    "project_id": "travel-motto",
-    "storage_bucket": "travel-motto.appspot.com"
+    "project_number": "452128110382",
+    "project_id": "travelmotto-dev",
+    "storage_bucket": "travelmotto-dev.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:860150173112:android:5609c3122243e7e9bdd34d",
+        "mobilesdk_app_id": "1:452128110382:android:c02afa60a1147a03abecbf",
         "android_client_info": {
-          "package_name": "com.travelmotto.androidapp"
+          "package_name": "com.omekus.travelmotto.development"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBbBxMSqpIbFTYuhjAuLsF3Un9iIsKPvoM"
+          "current_key": "AIzaSyAHYVhk9a5wRhUBEoVVZD5ADcUExLXD5aM"
         }
       ],
       "services": {
