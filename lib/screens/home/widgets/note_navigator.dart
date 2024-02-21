@@ -15,7 +15,7 @@ class NoteNavigator extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const Text(
-            "Traveler Notes",
+            "Things you can do now",
             style: TextStyle(
               color: Colors.black87,
               fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class NoteNavigator extends StatelessWidget {
                                       color: Colors.black, fontSize: 14),
                                 ),
                                 Text(
-                                  "Find notes left by traveler on your location",
+                                  "Find notes left by travelers at your location",
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
                                       color: Colors.black54, fontSize: 12),
