@@ -17,7 +17,7 @@ class TravelGameNavigator extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "Travel Games",
+              "Play travel games",
               style: TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
