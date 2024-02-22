@@ -39,6 +39,8 @@ import 'package:travel_motto/screens/travel/current_travel/bloc/current_travel_b
 import 'package:travel_motto/screens/travel/current_travel/current_travel_screen.dart';
 import 'package:travel_motto/screens/travel/history/bloc/travel_history_bloc.dart';
 import 'package:travel_motto/screens/travel/history/travel_history_screen.dart';
+import 'package:travel_motto/screens/travel_games/create_game_type/bloc/create_game_type_bloc.dart';
+import 'package:travel_motto/screens/travel_games/create_game_type/create_game_type_screen.dart';
 import 'package:travel_motto/screens/travel_games/game_types/bloc/travel_game_types_bloc.dart';
 import 'package:travel_motto/screens/travel_games/game_types/travel_game_types_screen.dart';
 import 'package:travel_motto/screens/travel_games/organisers/bloc/travel_game_organiser_bloc.dart';
@@ -213,6 +215,18 @@ final GoRouter routes = GoRouter(
                   travelGameType: state.extra as TravelGameType),
               child: TravelGamesScreen(
                   travelGameType: state.extra as TravelGameType));
+        }),
+    GoRoute(
+        name: 'create_game_type',
+        path: '/create_game_type',
+        builder: (BuildContext context, GoRouterState state) {
+          return BlocProvider(
+              create: (_) => CreateGameTypeBloc(
+                    travelGamesRepository: context
+                        .read<RepositoryContainer>()
+                        .travelGamesRepository,
+                  ),
+              child: const CreateGameTypeScreen());
         }),
     GoRoute(
         name: 'travel_game_organisers',

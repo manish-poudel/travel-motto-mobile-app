@@ -3,6 +3,7 @@ import 'package:travel_motto/models/profile/traveller_profile.dart';
 import 'package:travel_motto/models/travel_game/travel_game.dart';
 import 'package:travel_motto/models/travel_game_organiser.dart/travel_game_organiser.dart';
 import 'package:travel_motto/models/travel_game_player/travel_game_player.dart';
+import 'package:travel_motto/models/travel_game_tips/travel_game_tips.dart';
 import 'package:travel_motto/models/travel_game_type/travel_game_type.dart';
 import 'package:travel_motto/repositories/traveller_profile_repository.dart';
 import 'package:travel_motto/utils/debug_print.dart';
@@ -14,6 +15,14 @@ class TravelGamesRepository {
         fromFirestore: (snapshots, _) =>
             TravelGameOrganiser.fromJson(snapshots.data()!),
         toFirestore: (travelGameOrganiser, _) => travelGameOrganiser.toJson(),
+      );
+
+  final travelGameHelpReference = FirebaseFirestore.instance
+      .collection("travel_game_helps")
+      .withConverter<TravelGameTips>(
+        fromFirestore: (snapshots, _) =>
+            TravelGameTips.fromJson(snapshots.data()!),
+        toFirestore: (travelGameTips, _) => travelGameTips.toJson(),
       );
 
   Future<QuerySnapshot<TravelGame>> getTravelGames(
@@ -151,5 +160,12 @@ class TravelGamesRepository {
         }
       });
     });
+  }
+
+  Future<QuerySnapshot<TravelGameTips>> getTravelGameOrganizeTips() {
+    return travelGameHelpReference
+        .where("id", isEqualTo: "travel_game_organise_tips")
+        .limit(1)
+        .get();
   }
 }

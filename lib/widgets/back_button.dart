@@ -9,6 +9,7 @@ class TMBackButton extends StatelessWidget {
         icon: const Icon(
           Icons.arrow_back_ios,
           size: 16,
+          color: Colors.black,
         ),
         onPressed: () => Navigator.of(context).pop());
   }

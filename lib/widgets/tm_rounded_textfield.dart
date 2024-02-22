@@ -15,6 +15,8 @@ class TMRoundedTextField extends StatelessWidget {
   final bool readOnly;
   final Widget? suffixIcon;
   final Function()? onTap;
+  final int? maxLine;
+  final TextInputType? textInputType;
 
   const TMRoundedTextField(
       {super.key,
@@ -28,6 +30,8 @@ class TMRoundedTextField extends StatelessWidget {
       this.fillColor = Colors.white,
       this.hintText = "",
       this.readOnly = false,
+      this.maxLine = 1,
+      this.textInputType,
       this.borderWidth = 1,
       this.onTap,
       this.suffixIcon,
@@ -40,6 +44,8 @@ class TMRoundedTextField extends StatelessWidget {
       readOnly: readOnly,
       controller: controller,
       style: style,
+      maxLines: maxLine,
+      keyboardType: textInputType,
       cursorColor: cursorColor,
       decoration: InputDecoration(
           contentPadding: contentPadding,
