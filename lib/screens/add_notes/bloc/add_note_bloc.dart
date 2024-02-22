@@ -5,6 +5,7 @@ import 'package:travel_motto/models/travel_location/travel_location.dart';
 import 'package:travel_motto/repositories/location_repository.dart';
 import 'package:travel_motto/repositories/location_notes_repository.dart';
 import 'package:travel_motto/repositories/traveller_profile_repository.dart';
+import 'package:travel_motto/utils/debug_print.dart';
 
 part 'add_note_event.dart';
 part 'add_note_state.dart';
@@ -64,10 +65,12 @@ class AddNoteBloc extends Bloc<AddNoteEvent, AddNoteState> {
         emit((state as _Ready)
             .copyWith(saveNoteState: const SaveNoteState.saved()));
       }).catchError((err) {
+        debugPrint(err.toString());
         emit((state as _Ready).copyWith(
             saveNoteState: SaveNoteState.failed(message: err.toString())));
       });
     } catch (err) {
+      debugPrint(err.toString());
       emit((state as _Ready).copyWith(
           saveNoteState: SaveNoteState.failed(message: err.toString())));
     }

@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:travel_motto/screens/travel_games/organisers/bloc/travel_game_organiser_bloc.dart';
 import 'package:travel_motto/screens/travel_games/organisers/widgets/travel_game_organiser_list_item.dart';
 import 'package:travel_motto/theme/theme.dart';
-import 'package:travel_motto/utils/launcher_utils.dart';
 
 import 'package:travel_motto/widgets/something_went_wrong.dart';
 
@@ -88,17 +87,17 @@ class _TravelGameOrganiserScreenState extends State<TravelGameOrganiserScreen> {
                                     }),
                               ),
                               Align(
-                                alignment: Alignment.bottomRight,
+                                alignment: Alignment.center,
                                 child: TextButton(
                                     onPressed: () async {
-                                      await LauncherUtils.launchWebsite(
-                                          url:
-                                              "https://sites.google.com/view/travelmotto/travel-games");
+                                      context.push('/rules_screen');
                                     },
                                     child: const Text(
-                                      "Want to organise game? Learn how",
+                                      "ORGANISE YOUR GAME",
                                       style: TextStyle(
-                                          color: Colors.grey, fontSize: 12),
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12),
                                     )),
                               )
                             ],
