@@ -47,7 +47,9 @@ class TravelGamesRepository {
   }
 
   Future<QuerySnapshot<TravelGameOrganiser>> getTravelGameOrganisers() {
-    return travelGameOrganiserReference.get();
+    return travelGameOrganiserReference
+        .where("status", isEqualTo: "approved")
+        .get();
   }
 
   Future<QuerySnapshot<TravelGameType>> getTravelGameTypes(String organiserId) {

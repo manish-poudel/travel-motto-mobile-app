@@ -8,13 +8,13 @@
             "name": "travel-motto",
             "request": "launch",
             "type": "dart",
-            "args": ["--flavor", "prod"]
+            "args": ["--flavor", "prod", "--dart-define=flavor=prod"]
         },
         {
             "name": "travel-motto (dev)",
             "request": "launch",
             "type": "dart",
-            "args": ["--flavor", "dev"]
+            "args": ["--flavor", "dev","--dart-define=flavor=dev"]
         },
     ]
 }

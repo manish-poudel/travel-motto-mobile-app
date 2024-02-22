@@ -45,6 +45,7 @@ import 'package:travel_motto/screens/travel_games/organisers/bloc/travel_game_or
 import 'package:travel_motto/screens/travel_games/organisers/travel_game_organiser_screen.dart';
 import 'package:travel_motto/screens/travel_games/play/bloc/play_travel_game_bloc.dart';
 import 'package:travel_motto/screens/travel_games/play/play_travel_game_screen.dart';
+import 'package:travel_motto/screens/travel_games/rules_screen/rules_screen.dart';
 import 'package:travel_motto/screens/travel_games/view/bloc/travel_games_bloc.dart';
 import 'package:travel_motto/screens/travel_games/view/travel_games_screen.dart';
 import 'package:travel_motto/services/auth/bloc/auth_bloc.dart';
@@ -270,6 +271,12 @@ final GoRouter routes = GoRouter(
                   locationRepository:
                       context.read<RepositoryContainer>().locationRepository),
               child: const CreateTravelScreen());
+        }),
+    GoRoute(
+        name: 'rules_screen',
+        path: '/rules_screen',
+        builder: (BuildContext context, GoRouterState state) {
+          return const CreateTravelGameRulesScreen();
         }),
     GoRoute(
         name: 'update_travel',
