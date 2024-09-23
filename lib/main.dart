@@ -13,26 +13,7 @@ Future<void> main() async {
 
   String flavor = const String.fromEnvironment('flavor');
 
-  if (flavor == "prod") {
-    await Firebase.initializeApp(
-        options: const FirebaseOptions(
-      apiKey: 'AIzaSyBbBxMSqpIbFTYuhjAuLsF3Un9iIsKPvoM',
-      appId: '1:860150173112:android:5609c3122243e7e9bdd34d',
-      messagingSenderId: '860150173112',
-      projectId: 'travel-motto',
-      storageBucket: 'travel-motto.appspot.com',
-    ));
-  } else {
-    await Firebase.initializeApp(
-        options: const FirebaseOptions(
-      apiKey: 'AIzaSyAHYVhk9a5wRhUBEoVVZD5ADcUExLXD5aM',
-      appId: '1:452128110382:android:c02afa60a1147a03abecbf',
-      messagingSenderId: '452128110382',
-      projectId: 'travelmotto-dev',
-      storageBucket: 'travelmotto-dev.appspot.com',
-    ));
-  }
-
+ 
   runApp(MultiProvider(providers: [
     RepositoryProvider(create: (_) => RepositoryContainer()),
   ], child: const MyApp()));
